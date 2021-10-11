@@ -15,10 +15,10 @@ class Recipe(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     about = models.TextField(blank=True)
     servings = models.PositiveIntegerField()
-    prep_time = models.DurationField()
-    cook_time = models.DurationField()
+    prep_time = models.CharField(max_length=20)
+    cook_time = models.CharField(max_length=20)
     method = models.TextField()
-    nutrition = models.TextField()
+    nutrition = models.TextField(blank=True)
     tags = TaggableManager()
     status = models.IntegerField(choices=STATUS, default=0)
     featured_image = CloudinaryField('image', default='placeholder')
@@ -37,7 +37,7 @@ class Ingredients(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="ingredients")
     item = models.CharField(max_length=50)
     quantity = models.FloatField()
-    unit = models.CharField(max_length=20)
+    unit = models.CharField(max_length=20, blank=True)
 
     def __str__(self):
         return self.item
