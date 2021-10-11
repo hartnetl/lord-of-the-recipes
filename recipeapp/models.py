@@ -63,8 +63,9 @@ class Comment(models.Model):
     date_posted = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
 
-  class Meta:  
-      ordering = ['date_posted']  
+    class Meta:
+        ordering = ['date_posted']  
 
-  def __str__(self):  
-      return f"Comment {self.message} by {self.name}"  
+    def __str__(self):
+        return f"Comment {self.message} by {self.name}"  
+        
