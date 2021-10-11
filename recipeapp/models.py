@@ -23,7 +23,7 @@ class Recipe(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     featured_image = CloudinaryField('image', default='placeholder')
     approval = models.BooleanField(default=False)
-    category = models.ManyToManyField('Category', related_name="recipe_category", blank=True)
+    category = models.ManyToManyField('Category', related_name="recipe_category")
 
     class Meta:
         ordering = ['title']

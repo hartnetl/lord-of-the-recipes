@@ -20,5 +20,10 @@ class RecipeAdmin(SummernoteModelAdmin, admin.ModelAdmin):
     summernote_fields = ('about', 'method', 'nutrition')
     inlines = [IngredientInline, ]
 
+    actions = ['approve_recipes']
+    def approve_recipes(self, request, queryset):
+        queryset.update(approved=True)
+
 
 admin.site.register(Category)
+
