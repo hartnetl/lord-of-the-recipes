@@ -51,3 +51,20 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+# Comments model
+class Comment(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='comments')
+
+    name = models.CharField(max_length=40)
+    email = models.EmailField()
+    message = models.TextField()
+    date_posted = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
+
+  class Meta:  
+      ordering = ['date_posted']  
+
+  def __str__(self):  
+      return f"Comment {self.message} by {self.name}"  
