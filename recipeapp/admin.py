@@ -7,15 +7,18 @@ class IngredientInline(admin.TabularInline):
     model = Ingredients
 
 
-class CategoryInline(admin.TabularInline):
-    model = Category
+# class CategoryInline(admin.TabularInline):
+#     model = Category
 
 
 @admin.register(Recipe)
 class RecipeAdmin(SummernoteModelAdmin, admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
-    list_filter = ('status', 'date_created', 'approval', 'categories__name')
-    search_fields = ['title', 'about', 'method', 'ingredients__item', 'categories__name']
+    list_filter = ('status', 'date_created', 'approval', 'category')
+    search_fields = ['title', 'about', 'method', 'ingredients__item', 'category']
     list_display = ('title', 'slug', 'status', 'date_created')
     summernote_fields = ('about', 'method', 'nutrition')
-    inlines = [IngredientInline, CategoryInline, ]
+    inlines = [IngredientInline, ]
+
+
+admin.site.register(Category)

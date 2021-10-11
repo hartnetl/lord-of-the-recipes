@@ -14,15 +14,16 @@ class Recipe(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipes")
     date_created = models.DateTimeField(auto_now_add=True)
     about = models.TextField(blank=True)
+    nutrition = models.TextField(blank=True)
     servings = models.PositiveIntegerField()
     prep_time = models.CharField(max_length=20)
     cook_time = models.CharField(max_length=20)
     method = models.TextField()
-    nutrition = models.TextField(blank=True)
     tags = TaggableManager()
     status = models.IntegerField(choices=STATUS, default=0)
     featured_image = CloudinaryField('image', default='placeholder')
     approval = models.BooleanField(default=False)
+    category = models.ManyToManyField('Category', related_name="recipe_category", blank=True)
 
     class Meta:
         ordering = ['title']
@@ -46,10 +47,7 @@ class Ingredients(models.Model):
 # category model
 class Category(models.Model):
 
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="categories")
-
-    name = models.CharField(max_length=200, unique=True)
-    description = models.TextField(max_length=500, blank=True)
+    name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
