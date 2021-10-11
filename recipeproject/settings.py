@@ -32,6 +32,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['lord-of-the-recipes.herokuapp.com', 'localhost']
 
+# allow tags to be searched in any case
+TAGGIT_CASE_INSENSITIVE = True
 
 # Application definition
 
@@ -44,6 +46,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'taggit',
     'recipeapp',
 ]
 
