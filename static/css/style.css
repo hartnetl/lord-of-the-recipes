@@ -9,7 +9,6 @@ main {
   margin-top: 5%;
 }
 
-
 /* home */
 
 #welcome {
@@ -129,7 +128,21 @@ main {
 
 /* Style the back side */
 .flip-card-back {
+  padding-top: 3%;
   background-color: #fff;
   color: #000;
   transform: rotateY(180deg);
+  height: 0;
 }
+
+.scroll-text {
+  height: 100%; 
+  overflow-x: scroll; 
+  overflow-y: scroll; 
+  width: 100%; 
+  padding: 5%;
+}
+
+ .scroll-text p { 
+  word-break: break-word; 
+} 

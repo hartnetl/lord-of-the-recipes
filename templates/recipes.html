@@ -70,11 +70,11 @@
                                     <h2 class="card-title">{{ recipe.title }}</h2>
                                 </a>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back scroll-text">
                                 <p class="author">Author: {{ recipe.creator }}</p>
                                 <p class="card-text text-muted h6">{{ recipe.date_created }} </p>
                                 <hr>
-                                <p class="card-text">{{ recipe.about }}</p>
+                                <p class="card-text">{{ recipe.about | safe }}</p>
                             </div>
                         </div>
                     </div>
