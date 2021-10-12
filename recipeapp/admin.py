@@ -1,14 +1,10 @@
 from django.contrib import admin
-from .models import Recipe, Ingredients, Category, Comment
+from .models import Recipe, Ingredients, Comment
 from django_summernote.admin import SummernoteModelAdmin
 
 
 class IngredientInline(admin.TabularInline):
     model = Ingredients
-
-
-# class CategoryInline(admin.TabularInline):
-#     model = Category
 
 
 @admin.register(Recipe)
@@ -25,8 +21,6 @@ class RecipeAdmin(SummernoteModelAdmin, admin.ModelAdmin):
     def approve_recipes(self, request, queryset):
         queryset.update(approved=True)
 
-
-admin.site.register(Category)
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):

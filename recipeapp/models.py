@@ -7,6 +7,13 @@ from taggit.managers import TaggableManager
 # Recipe model
 STATUS = ((0, "Draft"), (1, "Published"))
 
+CATEGORY_CHOICE = (
+    ("BFAST", "Breakfast"),
+    ("LUNCH", "Lunch"),
+    ("DINNER", "Dinner"),
+    ("DRINKS", "Drinks"),
+    ("OTHER", "Other"),
+)
 
 class Recipe(models.Model):
     title = models.CharField(max_length=200, unique=True)
@@ -23,7 +30,7 @@ class Recipe(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     featured_image = CloudinaryField('image', default='placeholder')
     approval = models.BooleanField(default=False)
-    category = models.ManyToManyField('Category', related_name="recipe_category")
+    category = models.CharField(max_length=9, choices=CATEGORY_CHOICE,  default='OTHER')
 
     class Meta:
         ordering = ['title']
@@ -44,15 +51,6 @@ class Ingredients(models.Model):
         return self.item
 
 
-# category model
-class Category(models.Model):
-
-    name = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.name
-
-
 # Comments model
 class Comment(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='comments')
@@ -64,8 +62,7 @@ class Comment(models.Model):
     approved = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['date_posted']  
+        ordering = ['date_posted']
 
     def __str__(self):
-        return f"Comment {self.message} by {self.name}"  
-        
+        return f"Comment {self.message} by {self.name}"
