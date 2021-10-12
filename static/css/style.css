@@ -1,6 +1,23 @@
-body {
-    background-color: #0d0d9c;
-    height: 80vh;
+/* general */
+
+main {
+  height: 80vh;
+}
+
+.box {
+  border: 1px solid black;
+  margin-top: 5%;
+}
+
+
+/* home */
+
+#welcome {
+  height: 20vh;
+}
+
+#explore, #signup {
+  height: 30vh;
 }
 
 /* Footer */

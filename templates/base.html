@@ -1,13 +1,12 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html class="h-100">
+<html lang="en">
 
 <head>
-    <title>Lord of the Recipes</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <!-- Fonts go here-->
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
@@ -18,14 +17,18 @@
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
     <!-- Custom css sheet-->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lord of the Recipes</title>
 </head>
 
 <body>
 
     <!-- Navigation -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <div class="d-flex flex-grow-1">
                 <span class="w-100 d-lg-none d-block">
@@ -63,15 +66,18 @@
     </nav>
 
     <main class="flex-shrink-0 main-bg">
-        {% block content %}
-        <!-- Content Goes here -->
-        {% endblock content %}
+        <div class="container">
+            {% block content %}
+            <!-- Content Goes here -->
+            {% endblock content %}
+        </div>
     </main>
 
     <!-- Footer -->
     <div class="footer-basic">
         <footer>
-            <div class="social"><a href="#"><i class="fab fa-github-square"></i></a><a href="#"><i class="fab fa-linkedin"></i></div>
+            <div class="social"><a href="#"><i class="fab fa-github-square"></i></a><a href="#"><i
+                        class="fab fa-linkedin"></i></div>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">Home</a></li>
                 <li class="list-inline-item"><a href="#">About</a></li>

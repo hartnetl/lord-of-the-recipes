@@ -2,6 +2,23 @@
 
 {% block content %}
 
-This is my content
+<h1>HOME</h1>
+
+<div id="welcome" class="box">
+    This box will contain a welcome message to our users
+</div>
+
+<div class=container>
+    <div class="row justify-content-around">
+        <div id="explore" class="col-md-5 box">
+            This box will encourage users to look at the recipes
+            <button type="button" class="btn btn-success">Explore</button>
+        </div>
+        <div id="signup" class="col-md-5 box">
+            This box will encourage users to sign up
+            <button type="button" class="btn btn-success">Sign Up</button>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
