@@ -12,11 +12,11 @@
     <div class="row justify-content-around">
         <div id="explore" class="col-md-5 box">
             This box will encourage users to look at the recipes
-            <button type="button" class="btn btn-success">Explore</button>
+            <button type="button" class="btn btn-success"><a href="{% url 'recipes' %}">Explore</a></button>
         </div>
         <div id="signup" class="col-md-5 box">
             This box will encourage users to sign up
-            <button type="button" class="btn btn-success">Sign Up</button>
+            <button type="button" class="btn btn-success"><a href="{% url 'login' %}">Sign Up</a></button>
         </div>
     </div>
 </div>
