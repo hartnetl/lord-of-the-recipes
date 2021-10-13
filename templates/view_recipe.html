@@ -44,11 +44,13 @@
                     {{ recipe.nutrition | safe }}
                 </p>
                 <p class="card-text ">
+                    
                     <strong>Ingredients:</strong><br>
                     {% for ingredient in ingredients %}
-                        {{ ingredients.item | safe }}
-                        {{ ingredients.quantity | safe }}
-                        {{ ingredients.unit | safe }}
+                    <p>
+                        {{ ingredient | safe }}
+                    </p>
+                   
                     {% endfor %}
 
                 </p>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.views import generic, View
-from .models import Recipe, Ingredients, Comment
+from .models import Recipe, Ingredients
 from django.views.generic import TemplateView
 
 
@@ -16,7 +16,8 @@ class FullRecipe(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
-
+        queryset1 = recipe.ingredients.all()
+        ingredients = queryset1
         comments = recipe.comments.filter(approved=True).order_by('date_posted')
 
         return render(
@@ -24,12 +25,8 @@ class FullRecipe(View):
             'view_recipe.html',
             {
                 'recipe': recipe,
+                'ingredients': ingredients,
                 'comments': comments
             },
         )
 
-
-class IngredientsView(generic.ListView):
-    model = Ingredients
-    queryset = Ingredients.objects.all()
-    template_name = 'view_recipe.html'

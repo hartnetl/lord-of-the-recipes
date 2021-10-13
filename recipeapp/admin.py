@@ -14,7 +14,7 @@ class RecipeAdmin(SummernoteModelAdmin, admin.ModelAdmin):
     search_fields = ['title', 'about', 'method', 'ingredients__item', 'category']
     list_display = ('title', 'slug', 'status', 'date_created')
     summernote_fields = ('about', 'method', 'nutrition')
-    inlines = [IngredientInline, ]
+    inlines = [IngredientInline]
 
     actions = ['approve_recipes']
 
