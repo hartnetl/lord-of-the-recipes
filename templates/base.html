@@ -33,7 +33,7 @@
             <div class="d-flex flex-grow-1">
                 <span class="w-100 d-lg-none d-block">
                     <!-- hidden spacer to center brand on mobile --></span>
-                <a class="navbar-brand d-none d-lg-inline-block" href="#"> LORD OF THE<br>RECIPES </a>
+                <a class="navbar-brand d-none d-lg-inline-block" href="{% url 'home' %}"> LORD OF THE<br>RECIPES </a>
                 <a class="navbar-brand-two mx-auto d-lg-none d-inline-block" href="#">
                     <img src="https://via.placeholder.com/40?text=LOGO" alt="logo">
                 </a>
@@ -46,19 +46,19 @@
             <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
                 <ul class="navbar-nav ms-auto flex-nowrap">
                     <li class="nav-item">
-                        <a href="#" class="nav-link m-2 menu-item nav-active">Home</a>
+                        <a href="{% url 'home' %}" class="nav-link m-2 menu-item nav-active">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link m-2 menu-item">About</a>
+                        <a href="{% url 'about' %}" class="nav-link m-2 menu-item">About</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link m-2 menu-item">Recipes</a>
+                        <a href="{% url 'recipes' %}" class="nav-link m-2 menu-item">Recipes</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link m-2 menu-item">Contact Us</a>
+                        <a href="{% url 'contact' %}" class="nav-link m-2 menu-item">Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link m-2 menu-item">Login</a>
+                        <a href="{% url 'login' %}" class="nav-link m-2 menu-item">Login</a>
                     </li>
                 </ul>
             </div>
