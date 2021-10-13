@@ -6,17 +6,18 @@
 
 <div class="masthead">
     <div class="container">
-        <div class="row g-0">
-            <div class="col-md-6 masthead-text">
+        <div class="row g-0 text-center">
+            <div class="col masthead-text">
                 <h1 class="recipe-title">{{ recipe.title }}</h1>
                 <p class="recipe-subtitle">{{ recipe.creator }} | {{ recipe.date_created }}</p>
             </div>
-            <div class="d-none d-md-block col-md-6 masthead-image">
-                {% if "placeholder" in post.featured_image.url %}
-                <img src="https://res.cloudinary.com/hartnetl/image/upload/v1634056214/temp-logo_lkdghp.png"
-                    width="100%">
+        </div>
+        <div class="row g-0 text-center">
+            <div class="d-none col d-md-block masthead-image">
+                {% if "placeholder" in recipe.featured_image.url %}
+                <img src="https://res.cloudinary.com/hartnetl/image/upload/v1634056214/temp-logo_lkdghp.png">
                 {% else %}
-                <img src=" {{ post.featured_image.url }}" width="100%">
+                <img src=" {{ post.featured_image.url }}">
                 {% endif %}
             </div>
         </div>
@@ -30,20 +31,29 @@
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">
                 <p class="card-text ">
-                    {{ recipe.servings | safe }}
-                    {{ recipe.prep_time | safe }}
-                    {{ recipe.cook_time | safe }}
+                    <strong>Servings: </strong>{{ recipe.servings | safe }}
+                    <strong>Preparation Time: </strong>{{ recipe.prep_time | safe }}
+                    <strong>Cooking Time: </strong>{{ recipe.cook_time | safe }}
                 </p>
                 <p class="card-text ">
+                    <strong>About:</strong><br>
                     {{ recipe.about | safe }}
                 </p>
                 <p class="card-text ">
+                    <strong>Nutrition:</strong><br>
                     {{ recipe.nutrition | safe }}
                 </p>
                 <p class="card-text ">
-                    {{ ingredients | safe }}
+                    <strong>Ingredients:</strong><br>
+                    {% for ingredient in ingredients %}
+                        {{ ingredients.item | safe }}
+                        {{ ingredients.quantity | safe }}
+                        {{ ingredients.unit | safe }}
+                    {% endfor %}
+
                 </p>
                 <p class="card-text ">
+                    <strong>Method:</strong><br>
                     {{ recipe.method | safe }}
                 </p>
                 <div class="row">
@@ -86,4 +96,3 @@
 </div>
 
 {% endblock content %}
-
