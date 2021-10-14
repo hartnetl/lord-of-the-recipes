@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.views import generic, View
+from django.views.generic.edit import CreateView
 from .models import Recipe, Ingredients
-from django.views.generic import TemplateView
+from .forms import CreateRecipe
 
 
 class RecipeList(generic.ListView):
@@ -30,3 +31,12 @@ class FullRecipe(View):
             },
         )
 
+
+class CreateRecipeView(CreateView):
+    form_class = CreateRecipe
+    template_name = 'recipe_form.html'
+
+    def get_initial(self, *args, **kwargs):
+        initial = super().get_initial(**kwargs)
+        initial['title'] = 'Enter Title'
+        return initial
