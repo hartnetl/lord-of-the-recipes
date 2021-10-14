@@ -1,12 +1,21 @@
 from .models import Recipe, Ingredients
 from django import forms
+from django.forms.models import inlineformset_factory
 
 
-class CreateRecipe(forms.ModelForm):
+class RecipeForm(forms.ModelForm):
 
     class Meta:
         model = Recipe
-        fields = ('title', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'method', 'tags', 'status', 'featured_image', 'category',)
+        exclude = ()
 
+class IngredientsForm(forms.ModelForm):
+
+    class Meta:
+        model = Ingredients()
+        exclude = ()
+
+IngredientsFormSet = inlineformset_factory(Recipe, Ingredients,
+                                          form=IngredientsForm, extra=1 )
 
 
