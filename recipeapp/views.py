@@ -2,6 +2,9 @@ from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.views import generic, View
 from django.views.generic.edit import CreateView
 from django.db import transaction
+from django.db import models
+from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Recipe
 from .forms import RecipeForm
 
@@ -30,10 +33,12 @@ class FullRecipe(View):
         )
 
 
-class RecipeCreate(CreateView):
+class RecipeCreate(LoginRequiredMixin, CreateView):
     model = Recipe
-    add_recipe = RecipeForm()
-    fields = ['title', 'creator', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
+    fields = ['title', 'slug', 'creator', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
     template_name = 'recipe_form.html'
+    success_url = ""
 
-   
+    def get_success_url(self):
+        return reverse('full_recipe', kwargs={'slug': self.object.slug})
+
