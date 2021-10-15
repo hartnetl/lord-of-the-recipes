@@ -2,49 +2,13 @@
 
 {% block content %}
 
+<button type="button" class="btn btn-outline-info" href="{% url 'contact' %}"><a href="{% url 'create' %}">Create a recipe</a></button>
+
+
 <h1>RECIPES</h1>
 
 <div class="container-fluid">
     <div class="row">
-
-        <!-- Recipe list-->
-        <!-- <div class="col-12 mt-3 left">
-            <div class="row">
-
-                {% for recipe in recipe_list %}
-
-                <div class="col-md-3">
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <div class="image-container">
-                                {% if "placeholder" in recipe.featured_image.url %}
-                                <img class="card-img-top"
-                                    src="https://res.cloudinary.com/hartnetl/image/upload/v1634056214/temp-logo_lkdghp.png">
-                                {% else %}
-                                <img class="card-img-top" src=" {{ recipe.featured_image.url }}">
-                                {% endif %}
-                                <div class="image-flash">
-                                    <p class="author">Author: {{ recipe.creator }}</p>
-                                </div>
-                            </div>
-                            <a href="#" class="recipe-link">
-                                <h2 class="card-title">{{ recipe.title }}</h2>
-                                <p class="card-text">{{ recipe.about }}</p>
-                            </a>
-                            <hr />
-                            <p class="card-text text-muted h6">{{ recipe.date_created }} </p>
-                        </div>
-                    </div>
-                </div>
-
-                {% if forloop.counter|divisibleby:4 %}
-            </div>
-            <div class="row">
-                {% endif %}
-                {% endfor %}
-
-            </div>
-        </div> -->
 
         <!-- flip card recipes -->
 
