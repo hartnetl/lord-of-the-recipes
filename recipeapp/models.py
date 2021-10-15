@@ -27,6 +27,7 @@ class Recipe(models.Model):
     servings = models.PositiveIntegerField()
     prep_time = models.CharField(max_length=20)
     cook_time = models.CharField(max_length=20)
+    ingredients = models.TextField()
     method = models.TextField()
     tags = TaggableManager()
     status = models.IntegerField(choices=STATUS, default=0)
@@ -40,17 +41,6 @@ class Recipe(models.Model):
     def __str__(self):
         return self.title
 
-
-# ingredients model
-class Ingredients(models.Model):
-
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="ingredients")
-    item = models.CharField(max_length=50)
-    quantity = models.FloatField()
-    unit = models.CharField(max_length=20, blank=True)
-
-    def __str__(self):
-        return f"{self.item}  {self.quantity}{self.unit}"
 
 
 # Comments model

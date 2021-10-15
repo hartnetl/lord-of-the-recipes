@@ -1,10 +1,7 @@
 from django.contrib import admin
-from .models import Recipe, Ingredients, Comment
+from .models import Recipe, Comment
 from django_summernote.admin import SummernoteModelAdmin
 
-
-class IngredientInline(admin.TabularInline):
-    model = Ingredients
 
 
 @admin.register(Recipe)
@@ -14,8 +11,6 @@ class RecipeAdmin(SummernoteModelAdmin, admin.ModelAdmin):
     search_fields = ['title', 'about', 'method', 'ingredients__item', 'category']
     list_display = ('title', 'slug', 'status', 'date_created')
     summernote_fields = ('about', 'method', 'nutrition')
-    inlines = [IngredientInline]
-
     actions = ['approve_recipes']
 
     def approve_recipes(self, request, queryset):
