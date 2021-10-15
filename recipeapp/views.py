@@ -18,8 +18,6 @@ class FullRecipe(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
-        queryset1 = recipe.ingredients.all()
-        ingredients = queryset1
         comments = recipe.comments.filter(approved=True).order_by('date_posted')
 
         return render(
@@ -27,7 +25,6 @@ class FullRecipe(View):
             'view_recipe.html',
             {
                 'recipe': recipe,
-                'ingredients': ingredients,
                 'comments': comments
             },
         )
@@ -35,7 +32,8 @@ class FullRecipe(View):
 
 class RecipeCreate(CreateView):
     model = Recipe
-    fields = ['title', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
+    add_recipe = RecipeForm()
+    fields = ['title', 'creator', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
     template_name = 'recipe_form.html'
 
    

@@ -45,14 +45,8 @@
                 </p>
                 <p class="card-text ">
                     
-                    <strong>Ingredients:</strong><br>
-                    {% for ingredient in ingredients %}
-                    <p>
-                        <input type="checkbox">
-                        {{ ingredient | safe }}
-                    </p>
-                   
-                    {% endfor %}
+                    <strong>Nutrition:</strong><br>
+                    {{ recipe.ingredients | safe }}
 
                 </p>
                 <p class="card-text ">

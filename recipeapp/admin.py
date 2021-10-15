@@ -10,7 +10,7 @@ class RecipeAdmin(SummernoteModelAdmin, admin.ModelAdmin):
     list_filter = ('status', 'date_created', 'approval', 'category')
     search_fields = ['title', 'about', 'method', 'ingredients__item', 'category']
     list_display = ('title', 'slug', 'status', 'date_created')
-    summernote_fields = ('about', 'method', 'nutrition')
+    summernote_fields = ('about', 'method', 'nutrition', 'ingredients')
     actions = ['approve_recipes']
 
     def approve_recipes(self, request, queryset):

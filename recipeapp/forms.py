@@ -6,5 +6,6 @@ class RecipeForm(forms.ModelForm):
 
     class Meta:
         model = Recipe
-        exclude = ()
+        exclude = ('slug', 'date_created', 'approval', )
+
 
