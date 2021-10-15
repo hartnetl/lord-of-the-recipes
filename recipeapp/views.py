@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.views import generic, View
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.db import transaction
 from django.db import models
 from django.urls import reverse
@@ -37,8 +37,19 @@ class RecipeCreate(LoginRequiredMixin, CreateView):
     model = Recipe
     fields = ['title', 'slug', 'creator', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
     template_name = 'recipe_form.html'
-    success_url = ""
 
     def get_success_url(self):
         return reverse('full_recipe', kwargs={'slug': self.object.slug})
 
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+
+class RecipeUpdate(UpdateView):
+    model = Recipe
+    fields = ['title', 'slug', 'creator', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
+    template_name = 'update_recipe_form.html'
+
+    def get_success_url(self):
+        return reverse('full_recipe', kwargs={'slug': self.object.slug})

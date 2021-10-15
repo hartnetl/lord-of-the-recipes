@@ -3,7 +3,7 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-    <button type="button" class="btn btn-outline-info" href="{% url 'contact' %}"><a href="{% url 'create' %}">Create a recipe</a></button>
+    <button type="button" class="btn btn-outline-info"><a href="{% url 'create' %}">Create a recipe</a></button>
 {% endif %}
 
 
