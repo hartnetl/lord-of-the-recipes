@@ -27,7 +27,7 @@ class Recipe(models.Model):
     servings = models.PositiveIntegerField()
     prep_time = models.CharField(max_length=20)
     cook_time = models.CharField(max_length=20)
-    ingredients = models.TextField()
+    ingredients = models.TextField(null=True)
     method = models.TextField()
     tags = TaggableManager()
     status = models.IntegerField(choices=STATUS, default=0)

@@ -35,7 +35,7 @@ class FullRecipe(View):
 
 class RecipeCreate(CreateView):
     model = Recipe
-    fields = ['title', 'about', 'nutrition', 'servings' , 'prep_time', 'cook_time', 'method', 'tags', 'status', 'featured_image', 'category', ]
+    fields = ['title', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
     template_name = 'recipe_form.html'
 
    
