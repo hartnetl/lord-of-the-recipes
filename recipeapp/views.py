@@ -35,12 +35,11 @@ class FullRecipe(View):
 
 class RecipeCreate(CreateView):
     model = Recipe
-    exclude = ('slug', 'approval',)
 
 
 class RecipeWithIngredients(CreateView):
     model = Recipe
-    fields = ['title', 'about', 'nutrition', 'servings' , 'prep_time', 'cook_time' , 'method', 'tags' , 'status' , 'featured_image' , 'category', ]
+    fields = ['title', 'about', 'nutrition', 'servings' , 'prep_time', 'cook_time', 'method', 'tags', 'status', 'featured_image', 'category', ]
     template_name = 'recipe_form.html'
 
     def get_context_data(self, **kwargs):
