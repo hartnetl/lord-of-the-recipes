@@ -43,16 +43,27 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'cloudinary_storage',
     'django.contrib.staticfiles',
+    'jquery',
     'cloudinary',
     'taggit',
     'django_summernote',
+    'crispy_forms',
     'recipeapp',
 ]
 
 
 SITE_ID = 1
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 # allow tags to be searched in any case
 TAGGIT_CASE_INSENSITIVE = True

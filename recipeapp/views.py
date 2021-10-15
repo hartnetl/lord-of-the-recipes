@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.views import generic, View
-from .models import Recipe, Ingredients
-from django.views.generic import TemplateView
+from django.views.generic.edit import CreateView
+from django.db import transaction
+from .models import Recipe
+from .forms import RecipeForm, IngredientsFormSet
 
 
 class RecipeList(generic.ListView):
@@ -30,3 +32,32 @@ class FullRecipe(View):
             },
         )
 
+
+class RecipeCreate(CreateView):
+    model = Recipe
+    exclude = ('slug', 'approval',)
+
+
+class RecipeWithIngredients(CreateView):
+    model = Recipe
+    fields = ['title', 'about', 'nutrition', 'servings' , 'prep_time', 'cook_time' , 'method', 'tags' , 'status' , 'featured_image' , 'category', ]
+    template_name = 'recipe_form.html'
+
+    def get_context_data(self, **kwargs):
+        data = super(RecipeWithIngredients, self).get_context_data(**kwargs)
+        if self.request.POST:
+            data['fullrecipe'] = IngredientsFormSet(self.request.POST)
+        else:
+            data['fullrecipe'] = IngredientsFormSet()
+        return data
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        fullrecipe = context['fullrecipe']
+        with transaction.atomic():
+            self.object = form.save()
+
+            if fullrecipe.is_valid():
+                fullrecipe.instance = self.object
+                fullrecipe.save()
+        return super(RecipeWithIngredients, self).form_valid(form)

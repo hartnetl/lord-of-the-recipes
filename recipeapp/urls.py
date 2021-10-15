@@ -1,9 +1,10 @@
 from . import views
 from django.urls import path
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 
 
 urlpatterns = [
+    path('create/', views.RecipeWithIngredients.as_view(), name='create'),
     path('recipe/', views.RecipeList.as_view(), name='recipes'),
     path('<slug:slug>/', views.FullRecipe.as_view(), name='full_recipe'),
     path('', TemplateView.as_view(template_name="index.html"), name="home"),
