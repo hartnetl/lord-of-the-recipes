@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.views import generic, View
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.db import transaction
 from django.db import models
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Recipe
 from .forms import RecipeForm
@@ -46,10 +46,16 @@ class RecipeCreate(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class RecipeUpdate(UpdateView):
+class RecipeUpdate(LoginRequiredMixin, UpdateView):
     model = Recipe
     fields = ['title', 'slug', 'creator', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
     template_name = 'update_recipe_form.html'
 
     def get_success_url(self):
         return reverse('full_recipe', kwargs={'slug': self.object.slug})
+
+
+class RecipeDelete(LoginRequiredMixin, DeleteView):
+    model = Recipe
+    template_name = 'recipe_confirm_delete.html'
+    success_url = reverse_lazy("recipes")

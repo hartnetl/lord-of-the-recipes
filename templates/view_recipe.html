@@ -3,6 +3,8 @@
 {% block content %}
 
 <button type="button" class="btn btn-outline-info"><a href="{% url 'update' recipe.slug %}">Edit recipe</a></button>
+<button type="button" class="btn btn-outline-info"><a href="{% url 'delete' recipe.slug %}">Delete recipe</a></button>
+
 
 <!-- Featured image header -->
 
