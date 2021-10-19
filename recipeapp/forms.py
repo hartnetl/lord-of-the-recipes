@@ -1,4 +1,4 @@
-from .models import Recipe
+from .models import Recipe, Comment
 from django import forms
 
 
@@ -9,3 +9,7 @@ class RecipeForm(forms.ModelForm):
         exclude = ('slug', 'date_created', 'approval', )
 
 
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('message',)

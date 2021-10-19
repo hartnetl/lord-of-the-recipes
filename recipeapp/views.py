@@ -5,8 +5,9 @@ from django.db import transaction
 from django.db import models
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Recipe
-from .forms import RecipeForm
+from django.contrib import messages
+from .models import Recipe, Comment
+from .forms import RecipeForm, CommentForm
 
 
 class RecipeList(generic.ListView):
@@ -28,11 +29,42 @@ class FullRecipe(View):
             'view_recipe.html',
             {
                 'recipe': recipe,
-                'comments': comments
+                'comments': comments,
+                "commented": False,
+                "comment_form": CommentForm()
+            },
+        )
+
+    def post(self, request, slug, *args, **kwargs):
+        queryset = Recipe.objects.filter(status=1)
+        recipe = get_object_or_404(queryset, slug=slug)
+        comments = recipe.comments.filter(approved=True).order_by('date_posted')
+
+        comment_form = CommentForm(data=request.POST)
+
+        if comment_form.is_valid():
+            comment_form.instance.email = request.user.email
+            comment_form.instance.name = request.user.username
+            comment = comment_form.save(commit=False)
+            comment.recipe = recipe
+            comment.save()
+            messages.success(request, "Your comment was sent successfully. Check status below.")
+        else:
+            comment_form = CommentForm()
+        
+        return render(
+            request,
+            'view_recipe.html',
+            {
+                'recipe': recipe,
+                'comments': comments,
+                "commented": True,
+                "comment_form": CommentForm()
             },
         )
 
 
+# CRUD FOR RECIPES (R is the full recipe view above)
 class RecipeCreate(LoginRequiredMixin, CreateView):
     model = Recipe
     fields = ['title', 'slug', 'creator', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
@@ -59,3 +91,9 @@ class RecipeDelete(LoginRequiredMixin, DeleteView):
     model = Recipe
     template_name = 'recipe_confirm_delete.html'
     success_url = reverse_lazy("recipes")
+
+
+# CRUD FOR COMMENTS (R is the full recipe view above)
+
+
+

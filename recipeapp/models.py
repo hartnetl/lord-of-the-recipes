@@ -42,7 +42,6 @@ class Recipe(models.Model):
         return self.title
 
 
-
 # Comments model
 class Comment(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='comments')
