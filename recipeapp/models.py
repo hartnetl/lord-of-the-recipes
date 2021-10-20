@@ -33,7 +33,7 @@ class Recipe(models.Model):
     tags = TaggableManager()
     status = models.IntegerField(choices=STATUS, default=0)
     featured_image = CloudinaryField('image', default='placeholder')
-    approval = models.BooleanField(default=False)
+    approved = models.BooleanField(default=False)
     category = models.CharField(max_length=9, choices=CATEGORY_CHOICE,  default='OTHER')
 
     # Using slugify found here https://kodnito.com/posts/slugify-urls-django/

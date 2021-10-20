@@ -13,7 +13,7 @@ from .forms import RecipeForm, CommentForm
 
 class RecipeList(generic.ListView):
     model = Recipe
-    queryset = Recipe.objects.filter(status=1).order_by('title')
+    queryset = Recipe.objects.filter(status=1, approved=True).order_by('title')
     template_name = 'recipes.html'
     paginate_by = 8
 
@@ -79,11 +79,11 @@ class RecipeCreate(LoginRequiredMixin, CreateView):
     #     fail_silently=False
     # )
 
-    mail_admins(
-        'Recipe approval',
-        'A user has posted a recipe and is waiting approval.',
-        fail_silently=False
-    )
+    # mail_admins(
+    #     'Recipe approval',
+    #     'A user has posted a recipe and is waiting approval.',
+    #     fail_silently=False
+    # )
 
     def get_success_url(self):
         return reverse('full_recipe', kwargs={'slug': self.object.slug})
