@@ -9,13 +9,28 @@ from django.contrib import messages
 from django.core.mail import send_mail, mail_admins
 from .models import Recipe, Comment
 from .forms import RecipeForm, CommentForm
+from taggit.models import Tag
 
 
-class RecipeList(generic.ListView):
+class TagMixin(object):
+    def get_context_data(self, **kwargs):
+        context = super(TagMixin, self).get_context_data(**kwargs)
+        context['tags'] = Tag.objects.all()
+        return context
+
+class RecipeList(TagMixin, generic.ListView):
     model = Recipe
     queryset = Recipe.objects.filter(status=1, approved=True).order_by('title')
     template_name = 'recipes.html'
     paginate_by = 8
+
+
+class TagList(TagMixin, generic.ListView):
+    model = Recipe
+    template_name = 'recipes.html'
+
+    def get_queryset(self):
+        return Recipe.objects.filter(tags__slug=self.kwargs.get('tag_slug'))
 
 
 class FullRecipe(View):

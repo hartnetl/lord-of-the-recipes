@@ -3,11 +3,17 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-    <button type="button" class="btn btn-outline-info"><a href="{% url 'create' %}">Create a recipe</a></button>
+<button type="button" class="btn btn-outline-info"><a href="{% url 'create' %}">Create a recipe</a></button>
 {% endif %}
 
 
 <h1>RECIPES</h1>
+
+<h2>Search by tags:</h2>
+
+{% for tag in tags %}
+<a href="{% url 'recipes_by_tag' tag.slug %}">{{ tag.name }}</a>
+{% endfor %}
 
 <div class="container-fluid">
     <div class="row">
@@ -34,6 +40,13 @@
                                 </div>
                                 <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
                                     <h2 class="card-title">{{ recipe.title }}</h2>
+                                    <p>Tags: 
+                                        {% for tag in recipe.tags.all %}
+                                            <a href="{% url 'recipes_by_tag' tag.slug %}">{{ tag.name }}</a>
+                                        {% endfor %}</p>
+                                    <!-- {% for tag in recipe_list.tags.all %}
+                                        <p>{{tag}}</p>
+                                    {% endfor %} -->
                                 </a>
                             </div>
                             <div class="flip-card-back scroll-text">

@@ -14,4 +14,5 @@ urlpatterns = [
     path('about', TemplateView.as_view(template_name="about.html"), name="about"),
     path('contact', TemplateView.as_view(template_name="contact.html"), name="contact"),
     path('login', TemplateView.as_view(template_name="login.html"), name="login"),
+    path('tags/<slug:tag_slug>/', views.TagList.as_view(), name="recipes_by_tag"),
 ]

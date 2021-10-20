@@ -50,12 +50,14 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
-    'taggit',
     'django_summernote',
     'crispy_forms',
     # 'recipeapp',
     'recipeapp.apps.RecipeappConfig',
+    'taggit',
 ]
+
+
 
 
 SITE_ID = 1
