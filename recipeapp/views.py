@@ -6,6 +6,7 @@ from django.urls import reverse, reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from django.core.mail import send_mail, mail_admins
 from .models import Recipe, Comment
 from .forms import RecipeForm, CommentForm
 
@@ -70,8 +71,23 @@ class RecipeCreate(LoginRequiredMixin, CreateView):
     fields = ['title', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
     template_name = 'recipe_form.html'
 
+    # send_mail(
+    #     'Recipe approval',
+    #     'A user has posted a recipe and is waiting approval',
+    #     'hartnetl@tcd.ie',
+    #     ['laura.codeinstitute@outlook.com'],
+    #     fail_silently=False
+    # )
+
+    mail_admins(
+        'Recipe approval',
+        'A user has posted a recipe and is waiting approval.',
+        fail_silently=False
+    )
+
     def get_success_url(self):
         return reverse('full_recipe', kwargs={'slug': self.object.slug})
+
 
     def form_valid(self, form):
         form.instance.creator = self.request.user

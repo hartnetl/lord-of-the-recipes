@@ -13,3 +13,8 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('message',)
+
+
+class EmailForm(forms.Form):
+    recipient = forms.EmailField()
+    message = forms.CharField(widget=forms.Textarea)

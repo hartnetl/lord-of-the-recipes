@@ -36,6 +36,7 @@ class Recipe(models.Model):
     approval = models.BooleanField(default=False)
     category = models.CharField(max_length=9, choices=CATEGORY_CHOICE,  default='OTHER')
 
+    # Using slugify found here https://kodnito.com/posts/slugify-urls-django/
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)

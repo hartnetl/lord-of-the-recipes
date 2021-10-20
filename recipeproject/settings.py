@@ -33,6 +33,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['lord-of-the-recipes.herokuapp.com', 'localhost']
 
+# ADMINS = [('Laura', 'laura.codeinstitute@outlook.com')]
 
 # Application definition
 
