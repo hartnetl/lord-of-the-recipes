@@ -3,6 +3,7 @@ from django.views import generic, View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse, reverse_lazy
+from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from .models import Recipe, Comment
@@ -99,8 +100,8 @@ class RecipeDelete(LoginRequiredMixin, DeleteView):
 class ProfileRecipes(View):
 
     def get(self, request, *args, **kwargs):
-        published = Recipe.objects.filter(status=1)
-        draft = Recipe.objects.filter(status=0)
+        published = Recipe.objects.filter(status=1, creator=request.user)
+        draft = Recipe.objects.filter(status=0, creator=request.user)
 
         return render(
             request,
