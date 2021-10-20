@@ -67,20 +67,21 @@ class FullRecipe(View):
 # CRUD FOR RECIPES (R is the full recipe view above)
 class RecipeCreate(LoginRequiredMixin, CreateView):
     model = Recipe
-    fields = ['title', 'slug', 'creator', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
+    fields = ['title', 'slug', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
     template_name = 'recipe_form.html'
 
     def get_success_url(self):
         return reverse('full_recipe', kwargs={'slug': self.object.slug})
 
     def form_valid(self, form):
+        form.instance.creator = self.request.user
         print(form.cleaned_data)
         return super().form_valid(form)
 
 
 class RecipeUpdate(LoginRequiredMixin, UpdateView):
     model = Recipe
-    fields = ['title', 'slug', 'creator', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
+    fields = ['title', 'slug', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
     template_name = 'update_recipe_form.html'
 
     def get_success_url(self):
