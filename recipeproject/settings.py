@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     'taggit',
     'django_summernote',
     'crispy_forms',
-    'recipeapp',
+    # 'recipeapp',
+    'recipeapp.apps.RecipeappConfig',
 ]
 
 
