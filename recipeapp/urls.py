@@ -6,6 +6,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('create/', views.RecipeCreate.as_view(), name='create'),
     path('recipe/', views.RecipeList.as_view(), name='recipes'),
+    path('profile/', views.ProfileRecipes.as_view(), name='profile'),
     path('<slug:slug>/', views.FullRecipe.as_view(), name='full_recipe'),
     path('<slug:slug>/update/', views.RecipeUpdate.as_view(), name='update'),
     path('<slug:slug>/delete/', views.RecipeDelete.as_view(), name='delete'),

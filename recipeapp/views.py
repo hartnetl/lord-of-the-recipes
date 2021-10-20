@@ -1,8 +1,7 @@
-from django.shortcuts import render, get_object_or_404, get_list_or_404
+from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.db import transaction
-from django.db import models
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
@@ -20,7 +19,7 @@ class RecipeList(generic.ListView):
 class FullRecipe(View):
 
     def get(self, request, slug, *args, **kwargs):
-        queryset = Recipe.objects.filter(status=1)
+        queryset = Recipe.objects
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.filter(approved=True).order_by('date_posted')
 
@@ -95,5 +94,23 @@ class RecipeDelete(LoginRequiredMixin, DeleteView):
 
 # CRUD FOR COMMENTS (R is the full recipe view above)
 
+
+# VIEWS FOR THE PROFILE PAGE - USERS RECIPES
+class ProfileRecipes(View):
+
+    def get(self, request, *args, **kwargs):
+        published = Recipe.objects.filter(status=1)
+        draft = Recipe.objects.filter(status=0)
+
+        return render(
+            request,
+            'profile.html',
+            {
+                'published': published,
+                'draft': draft
+            }
+        )
+    
+    
 
 
