@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from taggit.managers import TaggableManager
@@ -34,6 +35,11 @@ class Recipe(models.Model):
     featured_image = CloudinaryField('image', default='placeholder')
     approval = models.BooleanField(default=False)
     category = models.CharField(max_length=9, choices=CATEGORY_CHOICE,  default='OTHER')
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(Recipe, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['title']
