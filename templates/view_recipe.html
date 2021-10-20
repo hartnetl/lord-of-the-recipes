@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-{% if user.is_authenticated %}
+{% if user.is_authenticated and user == recipe.creator %}
 <button type="button" class="btn btn-outline-info"><a href="{% url 'update' recipe.slug %}">Edit recipe</a></button>
 <button type="button" class="btn btn-outline-info"><a href="{% url 'delete' recipe.slug %}">Delete recipe</a></button>
 {% endif %}
