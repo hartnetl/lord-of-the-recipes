@@ -44,9 +44,6 @@
                                         {% for tag in recipe.tags.all %}
                                             <a href="{% url 'recipes_by_tag' tag.slug %}">{{ tag.name }}</a>
                                         {% endfor %}</p>
-                                    <!-- {% for tag in recipe_list.tags.all %}
-                                        <p>{{tag}}</p>
-                                    {% endfor %} -->
                                 </a>
                             </div>
                             <div class="flip-card-back scroll-text">
@@ -54,7 +51,8 @@
                                     <p class="author">Author: {{ recipe.creator }}</p>
                                     <p class="card-text text-muted h6">{{ recipe.date_created }} </p>
                                 </a>
-
+                                <br>
+                                <p class="card-text text-muted h6"><i class="far fa-heart"></i></p>
                                 <hr>
                                 <p class="card-text">{{ recipe.about | safe }}</p>
                             </div>
