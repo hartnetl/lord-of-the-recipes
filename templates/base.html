@@ -100,11 +100,11 @@
             <div class="social"><a href="#"><i class="fab fa-github-square"></i></a><a href="#"><i
                         class="fab fa-linkedin"></i></div>
             <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Home</a></li>
-                <li class="list-inline-item"><a href="#">About</a></li>
-                <li class="list-inline-item"><a href="#">Recipes</a></li>
-                <li class="list-inline-item"><a href="#">Contact</a></li>
-                <li class="list-inline-item"><a href="#">Login / Register</a></li>
+                <li class="list-inline-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="list-inline-item"><a href="{% url 'about' %}">About</a></li>
+                <li class="list-inline-item"><a href="{% url 'recipes' %}">Recipes</a></li>
+                <li class="list-inline-item"><a href="{% url 'contact' %}">Contact</a></li>
+                <li class="list-inline-item"><a href="{% url 'account_signup' %}">Login/Register</a></li>
             </ul>
             <p class="copyright">hartnetl © 2021</p>
         </footer>
