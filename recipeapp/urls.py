@@ -17,4 +17,5 @@ urlpatterns = [
     path('tags/<slug:tag_slug>/', views.TagList.as_view(), name="recipes_by_tag"),
     # path('categories/<slug:category_slug>/', views.CategoryView.as_view(), name="recipes_by_category"),
     path('recipe/breakfast/', views.BreakfastView.as_view(), name="breakfast"),
+    path('recipe/lunch/', views.LunchView.as_view(), name="lunch"),
 ]
