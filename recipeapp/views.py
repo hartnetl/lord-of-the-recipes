@@ -125,8 +125,6 @@ class RecipeDelete(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("recipes")
 
 
-# CRUD FOR COMMENTS (R is the full recipe view above)
-
 
 # VIEWS FOR THE PROFILE PAGE - USERS RECIPES
 class ProfileRecipes(View):

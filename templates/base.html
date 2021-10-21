@@ -9,7 +9,6 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -18,11 +17,18 @@
     </script>
     <!-- Custom css sheet-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <!-- Custom js sheet-->
+    <script src="{% static 'js/script.js' %}"></script>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lord of the Recipes</title>
+     <!-- EmailJS *MUST BE AT BOTTOM OF HEAD* -->
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+     <script type="text/javascript">
+         (function() {emailjs.init('user_1dqcfIzm6DuOVqpkLPFQu');})();
+     </script>
 </head>
 
 <body>
