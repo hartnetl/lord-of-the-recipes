@@ -163,3 +163,10 @@ class LunchView(generic.ListView):
     queryset = Recipe.objects.filter(status=1, approved=True, category='LUNCH').order_by('title')
     template_name = 'lunch.html'
     paginate_by = 8
+
+
+class DinnerView(generic.ListView):
+    model = Recipe
+    queryset = Recipe.objects.filter(status=1, approved=True, category='DINNER').order_by('title')
+    template_name = 'dinner.html'
+    paginate_by = 8
