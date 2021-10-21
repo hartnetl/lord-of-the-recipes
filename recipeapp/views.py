@@ -155,7 +155,8 @@ class ProfileRecipes(View):
 
 class SaveRecipe(View):
 
-    def recipe(self, request, slug):
+    def post(self, request, slug):
+        print(slug)
         recipe = get_object_or_404(Recipe, slug=slug)
 
         if recipe.saved.filter(id=request.user.id).exists():
