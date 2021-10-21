@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.core.mail import send_mail, mail_admins
+from django.http import HttpResponseRedirect
 from .models import Recipe, Comment
 from .forms import RecipeForm, CommentForm
 from taggit.models import Tag
@@ -146,6 +147,19 @@ class ProfileRecipes(View):
             }
         )
     
-    
+
+# View to save recipes
+
+class SaveRecipe(View):
+
+    def recipe(self, request, slug):
+        recipe = get_object_or_404(Recipe, slug=slug)
+
+        if recipe.saved.filter(id=request.user.id).exists():
+            recipe.saved.remove(request.user)
+        else:
+            recipe.saved.add(request.user)
+
+        return HttpResponseRedirect(reverse('view_recipe', args=[slug]))
 
 
