@@ -7,18 +7,18 @@ from taggit.managers import TaggableManager
 
 
 # Recipe model
-STATUS = ((0, "Draft"), (1, "Published"))
-
-CATEGORY_CHOICE = (
-    ("BFAST", "Breakfast"),
-    ("LUNCH", "Lunch"),
-    ("DINNER", "Dinner"),
-    ("DRINKS", "Drinks"),
-    ("OTHER", "Other"),
-)
-
 
 class Recipe(models.Model):
+    STATUS = ((0, "Draft"), (1, "Published"))
+
+    CATEGORY_CHOICE = (
+        ("BFAST", "Breakfast"),
+        ("LUNCH", "Lunch"),
+        ("DINNER", "Dinner"),
+        ("DRINKS", "Drinks"),
+        ("OTHER", "Other"),
+    )
+
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipes")

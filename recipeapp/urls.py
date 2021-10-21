@@ -15,4 +15,6 @@ urlpatterns = [
     path('contact', TemplateView.as_view(template_name="contact.html"), name="contact"),
     path('login', TemplateView.as_view(template_name="login.html"), name="login"),
     path('tags/<slug:tag_slug>/', views.TagList.as_view(), name="recipes_by_tag"),
+    # path('categories/<slug:category_slug>/', views.CategoryView.as_view(), name="recipes_by_category"),
+    path('recipe/breakfast/', views.BreakfastView.as_view(), name="breakfast"),
 ]

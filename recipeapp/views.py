@@ -33,6 +33,12 @@ class TagList(TagMixin, generic.ListView):
         return Recipe.objects.filter(tags__slug=self.kwargs.get('tag_slug'))
 
 
+class CategoryView(generic.ListView):
+    model = Recipe
+    queryset = Recipe.objects.values('category').distinct()
+    template_name = 'recipes.html'
+
+
 class FullRecipe(View):
 
     def get(self, request, slug, *args, **kwargs):
@@ -145,3 +151,8 @@ class ProfileRecipes(View):
     
 
 
+class BreakfastView(generic.ListView):
+    model = Recipe
+    queryset = Recipe.objects.filter(status=1, approved=True, category='OTHER').order_by('title')
+    template_name = 'breakfast.html'
+    paginate_by = 8
