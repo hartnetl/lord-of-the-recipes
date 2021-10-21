@@ -39,6 +39,9 @@ class FullRecipe(View):
         queryset = Recipe.objects
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.filter(approved=True).order_by('date_posted')
+        saved = False
+        if recipe.saved.filter(id=self.request.user.id).exists():
+            saved = True
 
         return render(
             request,
@@ -46,6 +49,7 @@ class FullRecipe(View):
             {
                 'recipe': recipe,
                 'comments': comments,
+                'saved': saved,
                 "commented": False,
                 "comment_form": CommentForm()
             },
