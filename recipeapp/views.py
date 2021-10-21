@@ -3,13 +3,16 @@ from django.views import generic, View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse, reverse_lazy
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.mail import send_mail, mail_admins
 from .models import Recipe, Comment
 from .forms import RecipeForm, CommentForm
 from taggit.models import Tag
+from django.contrib import comments
 
 
 class TagMixin(object):
@@ -78,6 +81,14 @@ class FullRecipe(View):
                 "comment_form": CommentForm()
             },
         )
+    
+    @login_required
+    def delete_own_comment(self, request, message_id):
+        comment = get_object_or_404(comments.get_model(), pk=message_id,
+                                    site__pk=settings.SITE_ID)
+        if comment.user == request.user:
+            comment.is_removed = True
+            comment.save()
 
 
 # CRUD FOR RECIPES (R is the full recipe view above)
