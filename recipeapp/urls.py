@@ -8,6 +8,7 @@ urlpatterns = [
     path('recipe/', views.RecipeList.as_view(), name='recipes'),
     path('profile/', views.ProfileRecipes.as_view(), name='profile'),
     path('<slug:slug>/', views.FullRecipe.as_view(), name='full_recipe'),
+    path('devas/<slug:slug>/', views.SaveRecipe.as_view(), name='recipe_save'),
     path('<slug:slug>/update/', views.RecipeUpdate.as_view(), name='update'),
     path('<slug:slug>/delete/', views.RecipeDelete.as_view(), name='delete'),
     path('', TemplateView.as_view(template_name="index.html"), name="home"),

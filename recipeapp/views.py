@@ -40,9 +40,9 @@ class FullRecipe(View):
         queryset = Recipe.objects
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.filter(approved=True).order_by('date_posted')
-        saved = False
+        saves = False
         if recipe.saved.filter(id=self.request.user.id).exists():
-            saved = True
+            saves = True
 
         return render(
             request,
@@ -50,7 +50,7 @@ class FullRecipe(View):
             {
                 'recipe': recipe,
                 'comments': comments,
-                'saved': saved,
+                'saves': saves,
                 "commented": False,
                 "comment_form": CommentForm()
             },
@@ -60,6 +60,9 @@ class FullRecipe(View):
         queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.filter(approved=True).order_by('date_posted')
+        saves = False
+        if recipe.saved.filter(id=self.request.user.id).exists():
+            saves = True
 
         comment_form = CommentForm(data=request.POST)
 
@@ -80,6 +83,7 @@ class FullRecipe(View):
                 'recipe': recipe,
                 'comments': comments,
                 "commented": True,
+                "saves": saves,
                 "comment_form": CommentForm()
             },
         )
@@ -130,7 +134,6 @@ class RecipeDelete(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("recipes")
 
 
-
 # VIEWS FOR THE PROFILE PAGE - USERS RECIPES
 class ProfileRecipes(View):
 
@@ -160,6 +163,5 @@ class SaveRecipe(View):
         else:
             recipe.saved.add(request.user)
 
-        return HttpResponseRedirect(reverse('view_recipe', args=[slug]))
-
+        return HttpResponseRedirect(reverse('full_recipe', args=[slug]))
 
