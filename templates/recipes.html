@@ -15,17 +15,14 @@
 <a href="{% url 'recipes_by_tag' tag.slug %}">{{ tag.name }}</a>
 {% endfor %}
 
-<h2>Search by category</h2>
+<h2>View by category</h2>
 
-<!-- {{ recipe.category }} -->
+<a href="{% url 'breakfast' %}" class="btn btn-outline-secondary" role="button" aria-disabled="true">Breakfast</a>
+<a href="{% url 'lunch' %}" class="btn btn-outline-success" role="button" aria-disabled="true">Lunch</a>
+<a href="{% url 'dinner' %}" class="btn btn-outline-danger" role="button" aria-disabled="true">Dinner</a>
+<a href="{% url 'drinks' %}" class="btn btn-outline-warning" role="button" aria-disabled="true">Drinks</a>
+<a href="{% url 'other' %}" class="btn btn-outline-info" role="button" aria-disabled="true">Other</a>
 
-<!-- {{ recipe.get_category_display }} -->
-
-<!-- {% for category in cats %}
-{{category.category }}
-{% endfor %} -->
-
-{{ recipe.category_choice }}
 
 <div class="container-fluid">
     <div class="row">
