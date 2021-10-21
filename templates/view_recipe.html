@@ -16,6 +16,20 @@
             <div class="col masthead-text">
                 <h1 class="recipe-title">{{ recipe.title }}</h1>
                 <p class="recipe-subtitle">{{ recipe.creator }} | {{ recipe.date_created }}</p>
+                <strong>
+                    {% if user.is_authenticated %}
+                    <form class="d-inline" action="{% url 'save_recipe' recipe.slug %}" method="POST">
+                        {% csrf_token %}
+                        {% if saved %}
+                            <button type="submit" name="recipe_id" value="{{recipe.slug}}" class="btn-like"><i class="fas fa-heart"></i></button> 
+                        {% else %}
+                        <button type="submit" name="recipe_id" value="{{recipe.slug}}" class="btn-like"><i class="far fa-heart"></i></button> 
+                        {% endif %}
+                    </form>
+                    {% else %}
+                    <strong class="text-secondary"><i class="far fa-heart"></i></strong>
+                    {% endif %}
+                </strong>
             </div>
         </div>
         <div class="row g-0 text-center">
