@@ -4,4 +4,82 @@
 
 <h1>DRINKS</h1>
 
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- flip card recipes -->
+
+        <div class="col-12 mt-3 left">
+            <div class="row">
+
+                {% for recipe in recipe_list %}
+
+                <div class="col-md-3">
+                    <!-- <div class="card mb-3"> -->
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="image-container">
+                                    {% if "placeholder" in recipe.featured_image.url %}
+                                    <img class="card-img-top"
+                                        src="https://res.cloudinary.com/hartnetl/image/upload/v1634056214/temp-logo_lkdghp.png">
+                                    {% else %}
+                                    <img class="card-img-top" src=" {{ recipe.featured_image.url }}">
+                                    {% endif %}
+                                </div>
+                                <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
+                                    <h2 class="card-title">{{ recipe.title }}</h2>
+                                    <p>Tags: 
+                                        {% for tag in recipe.tags.all %}
+                                            <a href="{% url 'recipes_by_tag' tag.slug %}">{{ tag.name }}</a>
+                                        {% endfor %}</p>
+                                </a>
+                            </div>
+                            <div class="flip-card-back scroll-text">
+                                <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
+                                    <p class="author">Author: {{ recipe.creator }}</p>
+                                    <p class="card-text text-muted h6">{{ recipe.date_created }} </p>
+                                </a>
+
+                                <hr>
+                                <p class="card-text">{{ recipe.about | safe }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% if forloop.counter|divisibleby:4 %}
+            </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!-- PAGINATION CODE -->
+
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+
+
+</div>
+
 {% endblock %}
+

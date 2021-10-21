@@ -19,4 +19,5 @@ urlpatterns = [
     path('recipe/breakfast/', views.BreakfastView.as_view(), name="breakfast"),
     path('recipe/lunch/', views.LunchView.as_view(), name="lunch"),
     path('recipe/dinner/', views.DinnerView.as_view(), name="dinner"),
+    path('recipe/drinks/', views.DrinksView.as_view(), name="drinks"),
 ]
