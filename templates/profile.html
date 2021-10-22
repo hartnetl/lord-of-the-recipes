@@ -96,4 +96,50 @@
     </div>
 </div>
 
+
+<h2>SAVED RECIPES</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-3 left">
+            <div class="row">
+                {% for recipe in saved %}
+                
+                <div class="col-md-3">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="image-container">
+                                    {% if "placeholder" in recipe.featured_image.url %}
+                                    <img class="card-img-top"
+                                        src="https://res.cloudinary.com/hartnetl/image/upload/v1634056214/temp-logo_lkdghp.png">
+                                    {% else %}
+                                    <img class="card-img-top" src=" {{ recipe.featured_image.url }}">
+                                    {% endif %}
+                                </div>
+                                <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
+                                    <h2 class="card-title">{{ recipe.title }}</h2>
+                                </a>
+                            </div>
+                            <div class="flip-card-back scroll-text">
+                                <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
+                                    <p class="author">Author: {{ recipe.creator }}</p>
+                                    <p class="card-text text-muted h6">{{ recipe.date_created }} </p>
+                                </a>
+                                <hr>
+                                <p class="card-text">{{ recipe.about | safe }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <p>You haven't favourited any recipes yet</p>
+
+                {% endfor %}
+            </div>
+            
+        </div>
+    </div>
+</div>
+
 {% endblock %}

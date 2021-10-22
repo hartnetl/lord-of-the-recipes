@@ -139,22 +139,6 @@ class RecipeDelete(LoginRequiredMixin, DeleteView):
     template_name = 'recipe_confirm_delete.html'
     success_url = reverse_lazy("recipes")
 
-
-# VIEWS FOR THE PROFILE PAGE - USERS RECIPES
-class ProfileRecipes(View):
-
-    def get(self, request, *args, **kwargs):
-        published = Recipe.objects.filter(status=1, creator=request.user)
-        draft = Recipe.objects.filter(status=0, creator=request.user)
-
-        return render(
-            request,
-            'profile.html',
-            {
-                'published': published,
-                'draft': draft
-            }
-        )
     
 # View to save recipes
 
@@ -171,6 +155,31 @@ class SaveRecipe(View):
 
         return HttpResponseRedirect(reverse('full_recipe', args=[slug]))
 
+
+# VIEWS FOR THE PROFILE PAGE - USERS RECIPES
+class ProfileRecipes(View):
+
+    def get(self, request, *args, **kwargs):
+        published = Recipe.objects.filter(status=1, creator=request.user)
+        draft = Recipe.objects.filter(status=0, creator=request.user)
+        # display recipes saved by user credit
+        # https://www.py4u.net/discuss/1270319
+        # https://stackoverflow.com/questions/12615154/how-to-get-the-currently-logged-in-users-user-id-in-django
+        current_user = request.user
+        saved = User.objects.get(pk=current_user.id).saved_recipes.all()
+        
+        return render(
+            request,
+            'profile.html',
+            {
+                'published': published,
+                'draft': draft,
+                'saved': saved
+            }
+        )
+
+
+# Category views 
 
 class BreakfastView(generic.ListView):
     model = Recipe
