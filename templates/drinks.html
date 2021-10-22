@@ -6,6 +6,12 @@
 
 
 <div class="container-fluid">
+    <a href="{% url 'recipes' %}" class="btn btn-outline-secondary" role="button" aria-disabled="true">All</a>
+<a href="{% url 'breakfast' %}" class="btn btn-outline-secondary" role="button" aria-disabled="true">Breakfast</a>
+<a href="{% url 'lunch' %}" class="btn btn-outline-success" role="button" aria-disabled="true">Lunch</a>
+<a href="{% url 'dinner' %}" class="btn btn-outline-danger" role="button" aria-disabled="true">Dinner</a>
+<a href="{% url 'drinks' %}" class="btn btn-outline-warning" role="button" aria-disabled="true">Drinks</a>
+<a href="{% url 'other' %}" class="btn btn-outline-info" role="button" aria-disabled="true">Other</a>
     <div class="row">
 
         <!-- flip card recipes -->
