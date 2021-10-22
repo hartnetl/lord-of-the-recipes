@@ -35,6 +35,7 @@ class Recipe(models.Model):
     featured_image = CloudinaryField('image', default='placeholder')
     approved = models.BooleanField(default=False)
     category = models.CharField(max_length=9, choices=CATEGORY_CHOICE,  default='OTHER')
+    saved = models.ManyToManyField(User, related_name='saved_recipes', blank=True)
 
     # Using slugify found here https://kodnito.com/posts/slugify-urls-django/
     def save(self, *args, **kwargs):

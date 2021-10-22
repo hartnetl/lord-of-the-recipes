@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.core.mail import send_mail, mail_admins
+from django.http import HttpResponseRedirect
 from .models import Recipe, Comment
 from .forms import RecipeForm, CommentForm
 from taggit.models import Tag
@@ -45,6 +46,9 @@ class FullRecipe(View):
         queryset = Recipe.objects
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.filter(approved=True).order_by('date_posted')
+        saves = False
+        if recipe.saved.filter(id=self.request.user.id).exists():
+            saves = True
 
         return render(
             request,
@@ -52,6 +56,7 @@ class FullRecipe(View):
             {
                 'recipe': recipe,
                 'comments': comments,
+                'saves': saves,
                 "commented": False,
                 "comment_form": CommentForm()
             },
@@ -61,6 +66,9 @@ class FullRecipe(View):
         queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.filter(approved=True).order_by('date_posted')
+        saves = False
+        if recipe.saved.filter(id=self.request.user.id).exists():
+            saves = True
 
         comment_form = CommentForm(data=request.POST)
 
@@ -81,6 +89,7 @@ class FullRecipe(View):
                 'recipe': recipe,
                 'comments': comments,
                 "commented": True,
+                "saves": saves,
                 "comment_form": CommentForm()
             },
         )
@@ -131,7 +140,6 @@ class RecipeDelete(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("recipes")
 
 
-
 # VIEWS FOR THE PROFILE PAGE - USERS RECIPES
 class ProfileRecipes(View):
 
@@ -148,8 +156,21 @@ class ProfileRecipes(View):
             }
         )
     
-    
-# Category views
+# View to save recipes
+
+class SaveRecipe(View):
+
+    def post(self, request, slug):
+        print(slug)
+        recipe = get_object_or_404(Recipe, slug=slug)
+
+        if recipe.saved.filter(id=request.user.id).exists():
+            recipe.saved.remove(request.user)
+        else:
+            recipe.saved.add(request.user)
+
+        return HttpResponseRedirect(reverse('full_recipe', args=[slug]))
+
 
 class BreakfastView(generic.ListView):
     model = Recipe
