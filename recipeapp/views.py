@@ -8,6 +8,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.core.mail import send_mail, mail_admins
 from django.http import HttpResponseRedirect
+# from django_summernote.fields import SummernoteTextField
+# from django_summernote.widgets import SummernoteWidget, SummernoteInPlaceWidget
 from .models import Recipe, Comment
 from .forms import RecipeForm, CommentForm
 from taggit.models import Tag
@@ -98,7 +100,8 @@ class FullRecipe(View):
 # CRUD FOR RECIPES (R is the full recipe view above)
 class RecipeCreate(LoginRequiredMixin, CreateView):
     model = Recipe
-    fields = ['title', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
+    form_class = RecipeForm
+    # fields = ['title', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
     template_name = 'recipe_form.html'
 
     # send_mail(
@@ -118,7 +121,6 @@ class RecipeCreate(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse('full_recipe', kwargs={'slug': self.object.slug})
 
-
     def form_valid(self, form):
         form.instance.creator = self.request.user
         print(form.cleaned_data)
@@ -127,7 +129,9 @@ class RecipeCreate(LoginRequiredMixin, CreateView):
 
 class RecipeUpdate(LoginRequiredMixin, UpdateView):
     model = Recipe
-    fields = ['title', 'slug', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
+    form_class = RecipeForm
+    # summernote_fields = ['about', 'method', 'nutrition', 'ingredients', ]
+    # fields = ['title', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
     template_name = 'update_recipe_form.html'
 
     def get_success_url(self):
