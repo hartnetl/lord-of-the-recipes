@@ -2,19 +2,27 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+<a href="{% url 'create' %}" role="button" aria-disabled="true" class="btn btn-outline-warning create-button">
+    Create a recipe</a>
+{% endif %}
+
 <h1>BREAKFAST</h1>
 
-
-<div class="container-fluid">
 <a href="{% url 'recipes' %}" class="btn btn-outline-secondary" role="button" aria-disabled="true">All</a>
-<a href="{% url 'breakfast' %}" class="btn btn-outline-secondary" role="button" aria-disabled="true">Breakfast</a>
+<a href="{% url 'breakfast' %}" class="btn btn-secondary" role="button" aria-disabled="true">Breakfast</a>
 <a href="{% url 'lunch' %}" class="btn btn-outline-success" role="button" aria-disabled="true">Lunch</a>
 <a href="{% url 'dinner' %}" class="btn btn-outline-danger" role="button" aria-disabled="true">Dinner</a>
 <a href="{% url 'drinks' %}" class="btn btn-outline-warning" role="button" aria-disabled="true">Drinks</a>
 <a href="{% url 'other' %}" class="btn btn-outline-info" role="button" aria-disabled="true">Other</a>
+
+
+<!-- flip card recipes -->
+
+<div class="container-fluid">
     <div class="row">
 
-        <!-- flip card recipes -->
+        <!-- flip cards -->
 
         <div class="col-12 mt-3 left">
             <div class="row">
@@ -22,9 +30,10 @@
                 {% for recipe in recipe_list %}
 
                 <div class="col-md-3">
-                    <!-- <div class="card mb-3"> -->
                     <div class="flip-card">
                         <div class="flip-card-inner">
+
+                            <!-- FRONT OF CARD -->
                             <div class="flip-card-front">
                                 <div class="image-container">
                                     {% if "placeholder" in recipe.featured_image.url %}
@@ -36,56 +45,63 @@
                                 </div>
                                 <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
                                     <h2 class="card-title">{{ recipe.title }}</h2>
-                                    <p>Tags: 
+                                    <p class="recipe-card-text">Category: {{ recipe.category }} <br>
+                                        Tags:
                                         {% for tag in recipe.tags.all %}
-                                            <a href="{% url 'recipes_by_tag' tag.slug %}">{{ tag.name }}</a>
+                                        <a href="{% url 'recipes_by_tag' tag.slug %}">{{ tag.name }}</a>
                                         {% endfor %}</p>
                                 </a>
                             </div>
+
+                            <!-- BACK OF CARD-->
                             <div class="flip-card-back scroll-text">
                                 <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
-                                    <p class="author">Author: {{ recipe.creator }}</p>
-                                    <p class="card-text text-muted h6">{{ recipe.date_created }} </p>
+                                    <p class="recipe-card-text recipe-card-link">Author: {{ recipe.creator }} <br>
+                                        {{ recipe.date_created }} </p>
                                 </a>
-
                                 <hr>
-                                <p class="card-text">{{ recipe.about | safe }}</p>
+                                <p class="recipe-card-text">{{ recipe.about | safe }}</p>
                             </div>
                         </div>
                     </div>
+                    <br>
                 </div>
-
                 {% if forloop.counter|divisibleby:4 %}
             </div>
             <div class="row">
                 {% endif %}
                 {% endfor %}
-
             </div>
         </div>
-
-
     </div>
 
 
-    <!-- PAGINATION CODE -->
+    <!-- PAGINATION -->
 
     {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
+    <div class="pagination">
+        <div class="step-links">
             {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            <a href="?page=1">&laquo; First</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
             {% endif %}
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
 
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
             {% endif %}
-        </ul>
-    </nav>
+        </div>
+    </div>
     {% endif %}
+
+
 
 
 </div>
 
-{% endblock %}
 
+{% endblock %}

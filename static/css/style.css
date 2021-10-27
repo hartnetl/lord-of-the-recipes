@@ -184,7 +184,7 @@ RECIPE LIST PAGE
 #################
  */
 
-#create-button {
+.create-button {
   position: absolute;
   right: 15vw;
   margin-top: 2vh;
