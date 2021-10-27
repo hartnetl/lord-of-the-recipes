@@ -8,7 +8,8 @@
     <!-- Fonts go here-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Space+Mono:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Space+Mono:ital@1&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
@@ -29,28 +30,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lord of the Recipes</title>
-     <!-- EmailJS *MUST BE AT BOTTOM OF HEAD* -->
-     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-     <script type="text/javascript">
-         (function() {emailjs.init('user_1dqcfIzm6DuOVqpkLPFQu');})();
-     </script>
+    <!-- EmailJS *MUST BE AT BOTTOM OF HEAD* -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init('user_1dqcfIzm6DuOVqpkLPFQu');
+        })();
+    </script>
 </head>
 
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container-fluid">
             <div class="d-flex flex-grow-1">
                 <span class="w-100 d-lg-none d-block">
-                    <!-- hidden spacer to center brand on mobile --></span>
-                <a class="navbar-brand d-none d-lg-inline-block my-title" href="{% url 'home' %}"> LORD OF THE<br>RECIPES </a>
-                <a class="navbar-brand-two mx-auto d-lg-none d-inline-block" href="#">
-                    <img src="https://via.placeholder.com/40?text=LOGO" alt="logo">
-                </a>
-                {% if user.is_authenticated %}
-                <p>Hello {{ request.user }}</p>
-                {% endif %}
+                    <!-- hidden spacer to center brand on mobile --> </span>
+                <a class="navbar-brand d-none d-lg-inline-block my-title" href="{% url 'home' %}"> LORD OF
+                    THE<br>RECIPES</a>
+                <a class="navbar-brand mx-auto d-lg-none d-inline-block my-title" href="{% url 'home' %}">
+                    LORD OF THE RECIPES <br> {% if user.is_authenticated %}
+                    <span class="welcome-msg">Hello {{ request.user }}</span>
+                    {% endif %} </a>
                 <div class="w-100 text-right">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar">
                         <span class="navbar-toggler-icon"></span>
@@ -60,7 +62,7 @@
             <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
                 <ul class="navbar-nav ms-auto flex-nowrap">
                     <li class="nav-item">
-                        <a href="{% url 'home' %}" class="nav-link m-2 menu-item nav-active">Home</a>
+                        <a href="{% url 'home' %}" class="nav-link m-2 menu-item">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="{% url 'about' %}" class="nav-link m-2 menu-item">About</a>
@@ -73,17 +75,17 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        <a class="nav-link m-2 menu-item" href="{% url 'account_logout' %}">Logout</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                        <a class="nav-link m-2 menu-item" href="{% url 'profile' %}">Profile</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+                        <a class="nav-link m-2 menu-item" href="{% url 'account_signup' %}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                        <a class="nav-link m-2 menu-item" href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -91,8 +93,12 @@
         </div>
     </nav>
 
+
     <main class="flex-shrink-0 main-bg">
         <div class="container">
+            {% if user.is_authenticated %}
+            <em class="welcome-msg-main">Hello {{ request.user }}</em>
+            {% endif %}
             {% block content %}
             <!-- Content Goes here -->
             {% endblock content %}
@@ -102,8 +108,8 @@
     <!-- Footer -->
     <div class="footer-basic">
         <footer>
-            <div class="social"><a href="https://github.com/hartnetl"><i class="fab fa-github-square"></i></a><a href="https://www.linkedin.com/in/laurahartnett94/"><i
-                        class="fab fa-linkedin"></i></div>
+            <div class="social"><a href="https://github.com/hartnetl"><i class="fab fa-github-square"></i></a><a
+                    href="https://www.linkedin.com/in/laurahartnett94/"><i class="fab fa-linkedin"></i></div>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="{% url 'home' %}">Home</a></li>
                 <li class="list-inline-item"><a href="{% url 'about' %}">About</a></li>
