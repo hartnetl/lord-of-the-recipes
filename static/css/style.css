@@ -6,6 +6,9 @@
 
 /* main colours */
 
+a {
+  text-decoration: none;
+}
 .navbar, .footer-basic, .box {
   background-color: rgb(222, 235, 176);
 }
@@ -47,17 +50,40 @@ h1, h2, h3, h4, h5, h6 {
 /* general styling for all pages */
 
 main {
-  min-height: 100vh;
+  min-height: 85vh;
   background-color: #0e0924;
 }
 
 .box {
-  margin: 5%;
+  margin: 5% 0;
   border-radius: 15px;
   padding: 3%;
   text-align: center;
   box-shadow: 10px 10px 5px grey;
+  height: fit-content;
 }
+
+.box-button {
+  background-color: rgb(27, 139, 111);
+  box-shadow: 5px 5px 7px rgb(18, 99, 79);
+}
+
+.box-button a {
+  color: rgb(191, 209, 201);
+  letter-spacing: 2px;
+  margin: 3px;
+}
+
+.box-button:hover {
+  background-color: rgb(238, 230, 230);
+  box-shadow: 5px 5px 7px rgb(124, 122, 122);
+  
+}
+
+.box-button a:hover {
+  color: rgb(27, 139, 111);
+}
+
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Architects Daughter', cursive;
@@ -142,13 +168,13 @@ h1 {
 #################
  */
 
-#welcome {
+/* #welcome {
   height: 20vh;
-}
+} */
 
-#explore, #signup {
+/* #explore, #signup {
   height: 30vh;
-}
+} */
 
 
 
