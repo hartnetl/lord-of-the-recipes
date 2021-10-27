@@ -199,7 +199,6 @@ RECIPE LIST PAGE
   color: white;
 }
 
-
 /* FLIP CARDS */
 
 .flip-card {
@@ -316,4 +315,28 @@ RECIPE VIEW PAGE
   font-style: italic;
   /* font-family: 'Courgette', cursive; */
   /* font-family: 'Space Mono', monospace; */
+ }
+
+
+ /*
+#################
+  CONTACT PAGE 
+#################
+ */
+ 
+ #contact-form {
+   border: 1px groove grey;
+   background-color: white;
+   border-radius: 15px;
+   padding: 2%;
+ }
+
+ .form-group {
+   margin-bottom: 2%;
+ }
+
+ #contact-form button {
+   text-align: center;
+   display: flex;
+   margin: 0 auto;
  }
