@@ -184,14 +184,29 @@ RECIPE LIST PAGE
 #################
  */
 
+#create-button {
+  position: absolute;
+  right: 15vw;
+  margin-top: 2vh;
+}
+
+.tag-name {
+  color: white;
+}
+
+.tag-name:hover {
+  font-weight: bold;
+  color: white;
+}
+
+
 /* FLIP CARDS */
 
-/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
   background-color: transparent;
-  height: 30vh;
-  border: 1px solid #f1f1f1;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  height: 50vh;
+  box-shadow: 2px 2px 7px rgb(164, 185, 180);
+  perspective: 1000px; 
 }
 
 /* This container is needed to position the front and back side */
@@ -205,7 +220,7 @@ RECIPE LIST PAGE
   background-color: white;
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
+/* Do horizontal flip when you move the mouse over the card */
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
@@ -219,11 +234,12 @@ RECIPE LIST PAGE
   backface-visibility: hidden;
 }
 
-/* Style the front side (fallback if image is missing) */
+/* Style the front side */
 .flip-card-front {
   background-color: #fff;
   color: #000;
 }
+
 
 /* Style the back side */
 .flip-card-back {
@@ -236,7 +252,6 @@ RECIPE LIST PAGE
 
 .scroll-text {
   height: 100%; 
-  overflow-x: scroll; 
   overflow-y: scroll; 
   width: 100%; 
   padding: 5%;
@@ -246,6 +261,43 @@ RECIPE LIST PAGE
   word-break: break-word; 
 } 
 
+.card-title {
+  font-size: 1.5rem;
+  color: #0e0924;
+}
+
+.recipe-card-text {
+  font-size: 1rem;
+  color: rgba(14, 9, 36, .6);
+}
+.recipe-card-text a {
+  font-size: 1rem;
+  color: rgba(14, 9, 36, .6);
+}
+
+.recipe-card-link:hover {
+  background-color: rgba(228, 228, 122, 0.3);
+}
+
+.step-links {
+  width: 20vw;
+  margin: 0 auto 2vh auto;
+  text-align: center;
+}
+
+.current {
+  color: rgb(189, 186, 186);
+}
+
+.step-links a {
+  color: white;
+  margin-left: 2%;
+}
+
+.step-links a:hover {
+  color: white;
+  font-weight: bold;
+}
 
 /*
 #################
