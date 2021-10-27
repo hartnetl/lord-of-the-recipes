@@ -9,16 +9,13 @@
 
     <!-- Security token -->
     {% csrf_token %}
-    <div class="container">
+    <div class="container recipe-form">
         <div class="card">
-            <div class="card-header">
-                Create Recipe
-            </div>
             <div class="card-body">
                 {% crispy form %}
             </div>
         </div>
-        <input type="submit" value="Submit"> 
+        <input class="form-submit box-button" type="submit" value="Submit"> 
     </div>
 
 

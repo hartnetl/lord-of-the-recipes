@@ -2,19 +2,30 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+<a href="{% url 'create' %}" role="button" aria-disabled="true" class="btn btn-outline-warning create-button">
+    Create a recipe</a>
+{% endif %}
+
 <h1>PROFILE</h1>
 
 <h2>PUBLISHED RECIPES</h2>
 
-
 <div class="container-fluid">
     <div class="row">
+
+        <!-- flip cards -->
+
         <div class="col-12 mt-3 left">
             <div class="row">
+
                 {% for recipe in published %}
+
                 <div class="col-md-3">
                     <div class="flip-card">
                         <div class="flip-card-inner">
+
+                            <!-- FRONT OF CARD -->
                             <div class="flip-card-front">
                                 <div class="image-container">
                                     {% if "placeholder" in recipe.featured_image.url %}
@@ -26,26 +37,35 @@
                                 </div>
                                 <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
                                     <h2 class="card-title">{{ recipe.title }}</h2>
+                                    <p class="recipe-card-text">Category: {{ recipe.category }} <br>
+                                        Tags:
+                                        {% for tag in recipe.tags.all %}
+                                        <a href="{% url 'recipes_by_tag' tag.slug %}">{{ tag.name }}</a>
+                                        {% endfor %}</p>
                                 </a>
                             </div>
+
+                            <!-- BACK OF CARD-->
                             <div class="flip-card-back scroll-text">
                                 <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
-                                    <p class="author">Author: {{ recipe.creator }}</p>
-                                    <p class="card-text text-muted h6">{{ recipe.date_created }} </p>
+                                    <p class="recipe-card-text recipe-card-link">Author: {{ recipe.creator }} <br>
+                                        {{ recipe.date_created }} </p>
                                 </a>
                                 <hr>
-                                <p class="card-text">{{ recipe.about | safe }}</p>
+                                <p class="recipe-card-text">{{ recipe.about | safe }}</p>
                             </div>
                         </div>
                     </div>
+                    <br>
                 </div>
                 {% empty %}
-                <p>You have no recipes saved </p>
-
-               
+                <p>You have no recipes published </p>
+                {% if forloop.counter|divisibleby:4 %}
+            </div>
+            <div class="row">
+                {% endif %}
                 {% endfor %}
             </div>
-            
         </div>
     </div>
 </div>
@@ -55,13 +75,19 @@
 
 <div class="container-fluid">
     <div class="row">
+
+        <!-- flip cards -->
+
         <div class="col-12 mt-3 left">
             <div class="row">
+
                 {% for recipe in draft %}
-                
+
                 <div class="col-md-3">
                     <div class="flip-card">
                         <div class="flip-card-inner">
+
+                            <!-- FRONT OF CARD -->
                             <div class="flip-card-front">
                                 <div class="image-container">
                                     {% if "placeholder" in recipe.featured_image.url %}
@@ -73,25 +99,35 @@
                                 </div>
                                 <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
                                     <h2 class="card-title">{{ recipe.title }}</h2>
+                                    <p class="recipe-card-text">Category: {{ recipe.category }} <br>
+                                        Tags:
+                                        {% for tag in recipe.tags.all %}
+                                        <a href="{% url 'recipes_by_tag' tag.slug %}">{{ tag.name }}</a>
+                                        {% endfor %}</p>
                                 </a>
                             </div>
+
+                            <!-- BACK OF CARD-->
                             <div class="flip-card-back scroll-text">
                                 <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
-                                    <p class="author">Author: {{ recipe.creator }}</p>
-                                    <p class="card-text text-muted h6">{{ recipe.date_created }} </p>
+                                    <p class="recipe-card-text recipe-card-link">Author: {{ recipe.creator }} <br>
+                                        {{ recipe.date_created }} </p>
                                 </a>
                                 <hr>
-                                <p class="card-text">{{ recipe.about | safe }}</p>
+                                <p class="recipe-card-text">{{ recipe.about | safe }}</p>
                             </div>
                         </div>
                     </div>
+                    <br>
                 </div>
                 {% empty %}
-                <p>You have no recipes saved as draft</p>
-
+                <p>You have no recipes saved as draft </p>
+                {% if forloop.counter|divisibleby:4 %}
+            </div>
+            <div class="row">
+                {% endif %}
                 {% endfor %}
             </div>
-            
         </div>
     </div>
 </div>
@@ -101,13 +137,19 @@
 
 <div class="container-fluid">
     <div class="row">
+
+        <!-- flip cards -->
+
         <div class="col-12 mt-3 left">
             <div class="row">
+
                 {% for recipe in saved %}
-                
+
                 <div class="col-md-3">
                     <div class="flip-card">
                         <div class="flip-card-inner">
+
+                            <!-- FRONT OF CARD -->
                             <div class="flip-card-front">
                                 <div class="image-container">
                                     {% if "placeholder" in recipe.featured_image.url %}
@@ -119,27 +161,59 @@
                                 </div>
                                 <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
                                     <h2 class="card-title">{{ recipe.title }}</h2>
+                                    <p class="recipe-card-text">Category: {{ recipe.category }} <br>
+                                        Tags:
+                                        {% for tag in recipe.tags.all %}
+                                        <a href="{% url 'recipes_by_tag' tag.slug %}">{{ tag.name }}</a>
+                                        {% endfor %}</p>
                                 </a>
                             </div>
+
+                            <!-- BACK OF CARD-->
                             <div class="flip-card-back scroll-text">
                                 <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
-                                    <p class="author">Author: {{ recipe.creator }}</p>
-                                    <p class="card-text text-muted h6">{{ recipe.date_created }} </p>
+                                    <p class="recipe-card-text recipe-card-link">Author: {{ recipe.creator }} <br>
+                                        {{ recipe.date_created }} </p>
                                 </a>
                                 <hr>
-                                <p class="card-text">{{ recipe.about | safe }}</p>
+                                <p class="recipe-card-text">{{ recipe.about | safe }}</p>
                             </div>
                         </div>
                     </div>
+                    <br>
                 </div>
                 {% empty %}
-                <p>You haven't favourited any recipes yet</p>
-
+                <p>You have no recipes published </p>
+                {% if forloop.counter|divisibleby:4 %}
+            </div>
+            <div class="row">
+                {% endif %}
                 {% endfor %}
             </div>
-            
         </div>
     </div>
 </div>
+
+<!-- PAGINATION -->
+
+{% if is_paginated %}
+<div class="pagination">
+    <div class="step-links">
+        {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo; First</a>
+        <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
 
 {% endblock %}

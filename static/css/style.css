@@ -50,7 +50,7 @@ h1, h2, h3, h4, h5, h6 {
 /* general styling for all pages */
 
 main {
-  min-height: 95vh;
+  min-height: 90vh;
   background-color: #0e0924;
 }
 
@@ -340,3 +340,19 @@ RECIPE VIEW PAGE
    display: flex;
    margin: 0 auto;
  }
+
+ 
+  /*
+#################
+  RECIPE FORMS  
+#################
+ */
+
+.form-submit {
+  display: flex;
+  margin: 2% auto;
+}
+
+.recipe-form {
+  padding-bottom: 2%;
+}
