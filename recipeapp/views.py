@@ -156,7 +156,7 @@ class ProfileRecipes(View):
         # https://stackoverflow.com/questions/12615154/how-to-get-the-currently-logged-in-users-user-id-in-django
         current_user = request.user
         saved = User.objects.get(pk=current_user.id).saved_recipes.all()
-        
+        print(f"published:{published}, draft:{draft}, current user:{current_user}, saved:{saved}")
         return render(
             request,
             'profile.html',
