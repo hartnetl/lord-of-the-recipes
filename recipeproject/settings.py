@@ -89,6 +89,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'recipeproject.urls'
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
