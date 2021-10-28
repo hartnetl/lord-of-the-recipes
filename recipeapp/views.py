@@ -157,6 +157,7 @@ class ProfileRecipes(View):
         current_user = request.user
         saved = User.objects.get(pk=current_user.id).saved_recipes.all()
         print(f"published:{published}, draft:{draft}, current user:{current_user}, saved:{saved}")
+
         return render(
             request,
             'profile.html',
@@ -164,7 +165,7 @@ class ProfileRecipes(View):
                 'published': published,
                 'draft': draft,
                 'saved': saved
-            }
+            },
         )
 
 
