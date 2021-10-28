@@ -18,7 +18,7 @@
 
         <div class="col-12 mt-3 left">
             <div class="row">
-
+                
                 {% for recipe in published %}
 
                 <div class="col-md-3">
@@ -58,9 +58,9 @@
                     </div>
                     <br>
                 </div>
+                {% if forloop.counter|divisibleby:4 %}
                 {% empty %}
                 <p>You have no recipes published </p>
-                {% if forloop.counter|divisibleby:4 %}
             </div>
             <div class="row">
                 {% endif %}
@@ -120,9 +120,9 @@
                     </div>
                     <br>
                 </div>
+                {% if forloop.counter|divisibleby:4 %}
                 {% empty %}
                 <p>You have no recipes saved as draft </p>
-                {% if forloop.counter|divisibleby:4 %}
             </div>
             <div class="row">
                 {% endif %}
@@ -182,9 +182,10 @@
                     </div>
                     <br>
                 </div>
-                {% empty %}
-                <p>You have no recipes published </p>
                 {% if forloop.counter|divisibleby:4 %}
+
+                {% empty %}
+                <p>You have no recipes favourited. </p>
             </div>
             <div class="row">
                 {% endif %}
@@ -194,26 +195,6 @@
     </div>
 </div>
 
-<!-- PAGINATION -->
-
-{% if is_paginated %}
-<div class="pagination">
-    <div class="step-links">
-        {% if page_obj.has_previous %}
-        <a href="?page=1">&laquo; First</a>
-        <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
-
-        {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">Next</a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
-        {% endif %}
-    </div>
-</div>
 {% endif %}
 
 {% endblock %}
