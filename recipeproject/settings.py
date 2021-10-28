@@ -30,11 +30,10 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['lord-of-the-recipes.herokuapp.com', 'localhost']
 
-# ADMINS = [('Laura', 'laura.codeinstitute@outlook.com')]
 
 # Application definition
 
@@ -53,12 +52,9 @@ INSTALLED_APPS = [
     'cloudinary',
     'django_summernote',
     'crispy_forms',
-    # 'recipeapp',
     'recipeapp.apps.RecipeappConfig',
     'taggit',
 ]
-
-
 
 
 SITE_ID = 1
