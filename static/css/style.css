@@ -78,6 +78,9 @@ main {
 .box-button {
   background-color: rgb(27, 139, 111);
   box-shadow: 5px 5px 7px rgb(18, 99, 79);
+  border-radius: 5px;
+  display: flex;
+  margin: 0 auto;
 }
 
 .box-button a {
@@ -419,4 +422,17 @@ RECIPE VIEW PAGE
 
 .recipe-form {
   padding-bottom: 2%;
+}
+
+.centered {
+  text-align: center;
+  background-color:rgba(227, 236, 192, 0.8);
+  width: fit-content;
+  margin: 0 auto;
+  padding: 2%;
+  border-radius: 10px;
+}
+
+#signup_form {
+  text-align: left;
 }

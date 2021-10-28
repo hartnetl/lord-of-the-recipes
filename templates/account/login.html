@@ -9,7 +9,7 @@
 
 <h1>{% trans "Sign In" %}</h1>
 
-{% get_providers as socialaccount_providers %}
+<!-- {% get_providers as socialaccount_providers %}
 
 {% if socialaccount_providers %}
 <p>{% blocktrans with site.name as site_name %}Please sign in with one
@@ -26,9 +26,10 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
 </div>
 
-{% include "socialaccount/snippets/login_extra.html" %}
+{% include "socialaccount/snippets/login_extra.html" %} -->
 
-{% else %}
+<!-- {% else %} -->
+<div class="centered">
 <p>{% blocktrans %}If you have not created an account yet, then please
 <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 {% endif %}
@@ -42,5 +43,5 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
   <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
 </form>
-
+</div>
 {% endblock %}
