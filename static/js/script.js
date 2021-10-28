@@ -1,3 +1,4 @@
+// email user and admin when contact form is used 
 function sendMail(contactForm){
     emailjs.send("outlook", "lotr_contact", {
         "from_name": contactForm.name.value,
@@ -22,6 +23,8 @@ function newAlert() {
     alert("If you have completed the form correctly you will receive a confirmation email shortly!")
 }
 
+// email admin when user posts a recipe or comment
+
 function adminNotification() {
     emailjs.send("outlook","lotrAPPROVE")
     .then(
@@ -44,3 +47,14 @@ function submitAlert() {
 function editAlert() {
     alert("You have edited a post successfully. Admin will overlook the changes to ensure they still follow community guidelines.")
 }
+
+// message handling
+
+setTimeout(function() {
+    let messages = document.getElementById('msg');
+    // Assign a new bootstrap alert to alert
+    let alert = new bootstrap.Alert(messages);
+    // This is part of the bootstrap/js toolkit
+    alert.close();
+    // close the alert after 3000ms or 3 s
+}, 3000);
