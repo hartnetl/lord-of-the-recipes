@@ -23,6 +23,7 @@ class Recipe(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipes")
     date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
     about = models.TextField(blank=True)
     nutrition = models.TextField(blank=True)
     servings = models.PositiveIntegerField()
