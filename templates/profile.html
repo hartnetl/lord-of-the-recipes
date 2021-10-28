@@ -18,7 +18,7 @@
 
         <div class="col-12 mt-3 left">
             <div class="row">
-                
+
                 {% for recipe in published %}
 
                 <div class="col-md-3">
@@ -59,11 +59,11 @@
                     <br>
                 </div>
                 {% if forloop.counter|divisibleby:4 %}
+                <div class="row">
+                    {% endif %}
+                </div>
                 {% empty %}
                 <p>You have no recipes published </p>
-            </div>
-            <div class="row">
-                {% endif %}
                 {% endfor %}
             </div>
         </div>
@@ -121,11 +121,13 @@
                     <br>
                 </div>
                 {% if forloop.counter|divisibleby:4 %}
+                <div class="row">
+                    {% endif %}
+                </div>
                 {% empty %}
                 <p>You have no recipes saved as draft </p>
-            </div>
-            <div class="row">
-                {% endif %}
+
+
                 {% endfor %}
             </div>
         </div>
@@ -183,12 +185,13 @@
                     <br>
                 </div>
                 {% if forloop.counter|divisibleby:4 %}
-
+                <div class="row">
+                    {% endif %}
+                </div>
                 {% empty %}
                 <p>You have no recipes favourited. </p>
-            </div>
-            <div class="row">
-                {% endif %}
+
+
                 {% endfor %}
             </div>
         </div>
