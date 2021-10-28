@@ -1,5 +1,11 @@
+document.addEventListener("DOMContentLoaded", function() {
+    let spinner = document.getElementById("spinner");
+    spinner.style.display = "none"
+})
+
 // email user and admin when contact form is used 
 function sendMail(contactForm){
+    spinner.style.display = "block"
     emailjs.send("outlook", "lotr_contact", {
         "from_name": contactForm.name.value,
         "from_email": contactForm.email.value,
@@ -11,6 +17,7 @@ function sendMail(contactForm){
             console.log("SUCCESS", response);
             contactForm.reset();
             console.log("Form is reset");
+            spinner.style.display = "none"
         },
         function(error) {
             console.log("FAILED", error);
@@ -20,9 +27,10 @@ function sendMail(contactForm){
 }
 
 function newAlert() {
-    alert("If you have completed the form correctly you will receive a confirmation email shortly!")
+    alert("If you have completed the form correctly you will receive a confirmation email once the form resets!")
 }
 
+  
 // email admin when user posts a recipe or comment
 
 function adminNotification() {
@@ -52,9 +60,8 @@ function editAlert() {
 
 setTimeout(function() {
     let messages = document.getElementById('msg');
-    // Assign a new bootstrap alert to alert
     let alert = new bootstrap.Alert(messages);
-    // This is part of the bootstrap/js toolkit
     alert.close();
-    // close the alert after 3000ms or 3 s
 }, 3000);
+
+

@@ -5,7 +5,7 @@
 
 <h1>CREATE A RECIPE</h1>
 
-<form method="POST" enctype="multipart/form-data" onsubmit="submitAlert(); return adminNotification();">
+<form method="POST" enctype="multipart/form-data" onsubmit="adminNotification();">
 
     <!-- Security token -->
     {% csrf_token %}

@@ -5,11 +5,10 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.core.mail import send_mail, mail_admins
 from django.http import HttpResponseRedirect
-# from django_summernote.fields import SummernoteTextField
-# from django_summernote.widgets import SummernoteWidget, SummernoteInPlaceWidget
 from .models import Recipe, Comment
 from .forms import RecipeForm, CommentForm
 from taggit.models import Tag
@@ -80,7 +79,7 @@ class FullRecipe(View):
             comment = comment_form.save(commit=False)
             comment.recipe = recipe
             comment.save()
-            messages.success(request, "Your comment was sent successfully. Check status below.")
+            messages.success(request, "Your comment was sent successfully and is pending approval by admin.")
         else:
             comment_form = CommentForm()
         
@@ -98,25 +97,11 @@ class FullRecipe(View):
 
 
 # CRUD FOR RECIPES (R is the full recipe view above)
-class RecipeCreate(LoginRequiredMixin, CreateView):
+class RecipeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Recipe
     form_class = RecipeForm
-    # fields = ['title', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
     template_name = 'recipe_form.html'
-
-    # send_mail(
-    #     'Recipe approval',
-    #     'A user has posted a recipe and is waiting approval',
-    #     'hartnetl@tcd.ie',
-    #     ['laura.codeinstitute@outlook.com'],
-    #     fail_silently=False
-    # )
-
-    # mail_admins(
-    #     'Recipe approval',
-    #     'A user has posted a recipe and is waiting approval.',
-    #     fail_silently=False
-    # )
+    success_message = "Your recipe has been successfully submitted and is now awaiting by admin"
 
     def get_success_url(self):
         return reverse('full_recipe', kwargs={'slug': self.object.slug})
@@ -127,13 +112,13 @@ class RecipeCreate(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class RecipeUpdate(LoginRequiredMixin, UpdateView):
+class RecipeUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Recipe
     form_class = RecipeForm
     # summernote_fields = ['about', 'method', 'nutrition', 'ingredients', ]
     # fields = ['title', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
     template_name = 'update_recipe_form.html'
-
+    success_message = "Your recipe has been successfully updated and will be reviewed by admin"
     def get_success_url(self):
         return reverse('full_recipe', kwargs={'slug': self.object.slug})
 
