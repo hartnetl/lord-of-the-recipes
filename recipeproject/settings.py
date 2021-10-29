@@ -30,7 +30,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['lord-of-the-recipes.herokuapp.com', 'localhost']
 
@@ -59,7 +59,10 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
-SIGNUP_REDIRECT_URL = 'home'
+ACCOUNT_USER_MODEL_EMAIL_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = False
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
