@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.base import TemplateView
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -129,6 +130,11 @@ class RecipeDelete(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("recipes")
 
     
+class ContactPage(TemplateView):
+    template_name = 'contact.html'
+    success_message = "Your message has been sent and someone will get back to you shortly. Please don't leave this page until the form clears."
+
+
 # View to save recipes
 
 class SaveRecipe(View):
