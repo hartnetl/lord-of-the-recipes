@@ -344,7 +344,7 @@ RECIPE VIEW PAGE
   font-style: italic;
 }
 
-.recipe-subtitle{
+.recipe-subtitle {
   color: rgba(255, 255, 255, .4);
 }
 
@@ -354,11 +354,11 @@ RECIPE VIEW PAGE
   color: white;
 }
 
-.card{
+.card {
   border-radius: 10px;
 }
 
-#about-recipe{
+#about-recipe {
   display: flex;
 }
 
@@ -425,13 +425,81 @@ RECIPE VIEW PAGE
 
 .centered {
   text-align: center;
-  background-color:rgba(227, 236, 192, 0.8);
+  background-color: rgb(222, 235, 176);
   width: fit-content;
   margin: 0 auto;
   padding: 2%;
   border-radius: 10px;
 }
 
+/* Signup form  */
+
+.inner-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
 #signup_form {
   text-align: left;
+  margin: 5% 0 1% 0;
+  width: 100%;
 }
+
+#signup_form p {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 3% auto;
+  padding: 0;
+}
+
+#signup_form label {
+  width: 30%;
+}
+
+#signup_form input {
+  border-radius: 7px;
+}
+
+.smaller-text {
+  font-size: .8rem;
+}
+
+
+
+
+/* Media Queries  */
+
+@media screen and (max-width: 1024px) {
+  #signup_form {
+    width: 100%;
+    /* display: block;
+    margin: 0 auto; */ 
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  #signup_form {
+   padding: 0 3% 2% 3%;
+   margin-top: 0;
+  }
+
+  #sign-up-msg {
+    padding-top: 2%;
+  }
+
+  #id_password2 {
+    margin-bottom: 2%;
+  }
+
+  #signup_form label {
+    width: 100%;
+  }
+
+  #signup_form input {
+    width: 100%; 
+  }
+} 

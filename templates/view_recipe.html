@@ -5,6 +5,8 @@
 {% if user.is_authenticated and user == recipe.creator %}
 <a href="{% url 'update' recipe.slug %}" role="button" class="btn btn-outline-warning owner-buttons">Edit recipe</a>
 <a href="{% url 'delete' recipe.slug %}" role="button" class="btn btn-outline-warning owner-buttons">Delete recipe</a>
+{% elif user.is_superuser %}
+<a href="{% url 'delete' recipe.slug %}" role="button" class="btn btn-outline-warning owner-buttons">Delete recipe</a>
 {% endif %}
 
 
