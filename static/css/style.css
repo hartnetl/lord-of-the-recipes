@@ -61,9 +61,12 @@ h6 {
 
 /* general styling for all pages */
 
-main {
-  min-height: 90vh;
+body {
   background-color: #0e0924;
+}
+
+main {
+  min-height: 85vh;
 }
 
 .box {
@@ -440,6 +443,7 @@ RECIPE VIEW PAGE
   width: 100%;
   margin: 0 auto;
 }
+
 #signup_form {
   text-align: left;
   margin: 5% 0 1% 0;
@@ -468,27 +472,26 @@ RECIPE VIEW PAGE
 }
 
 
-
-
 /* Media Queries  */
 
 @media screen and (max-width: 1024px) {
   #signup_form {
     width: 100%;
     /* display: block;
-    margin: 0 auto; */ 
+    margin: 0 auto; */
   }
 }
 
 @media screen and (max-width: 600px) {
 
   #signup_form {
-   padding: 0 3% 2% 3%;
-   margin-top: 0;
+    padding: 0 3% 2% 3%;
+    margin-top: 0;
   }
 
   #sign-up-msg {
     padding-top: 2%;
+    margin-bottom: 0;
   }
 
   #id_password2 {
@@ -500,6 +503,23 @@ RECIPE VIEW PAGE
   }
 
   #signup_form input {
-    width: 100%; 
+    width: 100%;
   }
-} 
+}
+
+@media screen and (max-height: 600px) {
+
+  #signup-box {
+    margin-bottom: 5%;
+  }
+
+  #sign-up-msg {
+    padding-top: 2%;
+    margin-bottom: 0;
+  }
+
+  #signup_form {
+    padding: 0 3% 2% 3%;
+    margin-top: 0;
+  }
+}
