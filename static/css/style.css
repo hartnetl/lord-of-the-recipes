@@ -528,3 +528,9 @@ RECIPE VIEW PAGE
   }
   
 }
+
+@media screen and (min-height: 1000px) {
+
+  .flip-card {
+    height: 30vh;
+  }
