@@ -226,7 +226,7 @@ RECIPE LIST PAGE
 
 .flip-card {
   background-color: transparent;
-  height: 50vh;
+  height: 40vh;
   box-shadow: 2px 2px 7px rgb(164, 185, 180);
   perspective: 1000px;
 }
