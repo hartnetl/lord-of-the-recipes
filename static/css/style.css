@@ -522,4 +522,9 @@ RECIPE VIEW PAGE
     padding: 0 3% 2% 3%;
     margin-top: 0;
   }
+
+  .bottom-margin {
+    margin-bottom: 5%;
+  }
+  
 }
