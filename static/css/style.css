@@ -295,14 +295,31 @@ RECIPE LIST PAGE
   color: rgba(14, 9, 36, .6);
 }
 
-.recipe-card-text a {
-  font-size: 1rem;
-  color: rgba(14, 9, 36, .6);
+#recipe-button-text {
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+  padding: 1% 3%;
 }
 
-.recipe-card-link:hover {
-  background-color: rgba(228, 228, 122, 0.3);
+.short-recipe-card-text {
+  text-align: center;
 }
+
+.middle {
+  display: flex;
+  margin: 0 auto;
+}
+
+.recipe-card-text a {
+  font-size: 1rem;
+  /* color: rgba(14, 9, 36, .6); */
+  color: rgba(249, 248, 252);
+}
+
+/* .recipe-card-text a btn {
+  color: white;
+} */
 
 .step-links {
   width: 20vw;
@@ -477,13 +494,23 @@ RECIPE VIEW PAGE
 @media screen and (max-width: 1024px) {
   #signup_form {
     width: 100%;
-    /* display: block;
-    margin: 0 auto; */
   }
 }
 
 @media screen and (max-width: 600px) {
 
+  /* recipe cards */
+
+  .card-img-top {
+    height: 30vh;
+    width: 100%;
+  }
+
+  .flip-card {
+    height: 50vh;
+  }
+
+  /* sign up form  */
   #signup_form {
     padding: 0 3% 2% 3%;
     margin-top: 0;

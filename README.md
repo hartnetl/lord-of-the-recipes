@@ -1,5 +1,3 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
 # Lord of the Recipes
 
 [Live Site]( )
@@ -21,25 +19,39 @@
 
 ***
 
-Overview the project
+- who this site is for and what it will do. Experience of users and owners.
+
+Welcome to **Lord of the Recipes**. This website has been built for my fourth portfolio project with the Code Institute to create a django based application. This site is a hosting platform for recipes with a pop culture theme.
 
 ### Project Planning
 
-Project conception, user stories, wireframes
+User stories 
 
-## Data Model
+All users
+Registered users
+Admin
 
+wireframes
 
-Models tables and planning
+UI design
+    fonts
+    colour scheme
 
+## Data Structure
+
+    How the site operates and works
+    Database used (postgres) and image source (cloudinary)
 
 ## Technologies Used
 
 ***
 
-- Python, javascript, html
-- Libraries etc
-    - django, bootstrap, taggit, summernote
+Languages
+    - Python, javascript, html, css
+Libraries etc
+    - django, bootstrap, taggit, summernote, googlefonts, fontawesome, postgresql, cloudinary
+Other tools
+    - gitpod, git, github, heroku, w3c markup for html and css, jshint validator, linkchecker, lighthouse, pep8, grammerly, githubprojects, balsamiq,
     
 
 ## Features
