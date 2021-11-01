@@ -243,6 +243,22 @@ settings.py and views.py have lines which throw errors if broken using '\'.
 </details>
 </details>
 
+JS: [JSHint]()  
+JS script was ran through jshint and returns no errors or warnings
+<details><summary>View jshint result</summary>
+
+![screenshot of jshint results](static/readme/jshint.png)
+</details>
+
+
+Links: [w3c link validator]()
+On the home page there was a warning for the LinkedIn link. It was tested manually as suggested and it works as expected.
+<details>
+<summary>View report here</summary>
+
+![links report](static/readme/links.png)
+</details>
+
 
 ### Automated testing
 
