@@ -488,6 +488,15 @@ RECIPE VIEW PAGE
   font-size: .8rem;
 }
 
+/* PROFILE PAGE  */
+
+.empty-text  {
+  color: whitesmoke;
+}
+
+.empty-text p{
+  color: whitesmoke;
+}
 
 /* Media Queries  */
 

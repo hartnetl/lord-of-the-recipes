@@ -56,10 +56,10 @@
                                 </div>
                                 <h2 class="card-title">{{ recipe.title }}</h2>
                                 <p class="recipe-card-text d-none d-lg-block">Category: {{ recipe.category }} <br>
-                                        Tags:
-                                        {% for tag in recipe.tags.all %}
-                                        {{ tag.name }}
-                                        {% endfor %}
+                                    Tags:
+                                    {% for tag in recipe.tags.all %}
+                                    {{ tag.name }}
+                                    {% endfor %}
                                 </p>
                                 <a href="{% url 'full_recipe' recipe.slug %}" role="button"
                                     class="recipe-link btn btn-warning btn-sm d-lg-none">Go to recipe</a>

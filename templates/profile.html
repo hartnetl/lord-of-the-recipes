@@ -9,9 +9,10 @@
 
 <h1>PROFILE</h1>
 <br>
-<h2 class="fs-3">Published Recipes</h2>
 
 <div class="container">
+    <h2 class="fs-3">Published Recipes</h2>
+
     <div class="row">
 
         <!-- flip cards -->
@@ -20,6 +21,7 @@
             <div class="row">
 
                 {% for recipe in published %}
+
                 <div class="col-md-3">
                     <div class="flip-card">
                         <div class="flip-card-inner">
@@ -34,21 +36,24 @@
                                     <img class="card-img-top" src=" {{ recipe.featured_image.url }}">
                                     {% endif %}
                                 </div>
-                                <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
-                                    <h2 class="card-title">{{ recipe.title }}</h2>
-                                    <p class="recipe-card-text">Category: {{ recipe.category }} <br>
+                                <h2 class="card-title">{{ recipe.title }}</h2>
+                                <p class="recipe-card-text d-none d-lg-block">Category: {{ recipe.category }} <br>
                                         Tags:
                                         {% for tag in recipe.tags.all %}
-                                        <a href="{% url 'recipes_by_tag' tag.slug %}">{{ tag.name }}</a>
-                                        {% endfor %}</p>
-                                </a>
+                                        {{ tag.name }}
+                                        {% endfor %}
+                                </p>
+                                <a href="{% url 'full_recipe' recipe.slug %}" role="button"
+                                    class="recipe-link btn btn-warning btn-sm d-lg-none">Go to recipe</a>
                             </div>
 
                             <!-- BACK OF CARD-->
                             <div class="flip-card-back scroll-text">
-                                <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
-                                    <p class="recipe-card-text recipe-card-link">Author: {{ recipe.creator }} <br>
-                                        {{ recipe.date_created }} </p>
+
+                                <p class="recipe-card-text recipe-card-link">Author: {{ recipe.creator }} <br>
+                                    {{ recipe.date_created }} </p>
+                                <a href="{% url 'full_recipe' recipe.slug %}" role="button"
+                                    class="recipe-link btn btn-warning btn-sm">Go to recipe</a>
                                 </a>
                                 <hr>
                                 <p class="recipe-card-text">{{ recipe.about | safe }}</p>
@@ -58,19 +63,19 @@
                     <br>
                 </div>
                 {% if forloop.counter|divisibleby:4 %}
-                <div class="row">
-                    {% endif %}
-                    {% empty %}
-                    <p>You have no recipes published </p>
-                    {% endfor %}
-                </div>
-
+            </div>
+            <div class="row">
+                {% endif %}
+                {% empty %}
+                    <p class="empty-text">You have no recipes published </p>
+                {% endfor %}
             </div>
         </div>
     </div>
 </div>
 
 <br>
+
 <div class="container">
     <h2 class="fs-3">Draft Recipes</h2>
 
@@ -98,21 +103,24 @@
                                     <img class="card-img-top" src=" {{ recipe.featured_image.url }}">
                                     {% endif %}
                                 </div>
-                                <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
-                                    <h2 class="card-title">{{ recipe.title }}</h2>
-                                    <p class="recipe-card-text">Category: {{ recipe.category }} <br>
+                                <h2 class="card-title">{{ recipe.title }}</h2>
+                                <p class="recipe-card-text d-none d-lg-block">Category: {{ recipe.category }} <br>
                                         Tags:
                                         {% for tag in recipe.tags.all %}
-                                        <a href="{% url 'recipes_by_tag' tag.slug %}">{{ tag.name }}</a>
-                                        {% endfor %}</p>
-                                </a>
+                                        {{ tag.name }}
+                                        {% endfor %}
+                                </p>
+                                <a href="{% url 'full_recipe' recipe.slug %}" role="button"
+                                    class="recipe-link btn btn-warning btn-sm d-lg-none">Go to recipe</a>
                             </div>
 
                             <!-- BACK OF CARD-->
                             <div class="flip-card-back scroll-text">
-                                <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
-                                    <p class="recipe-card-text recipe-card-link">Author: {{ recipe.creator }} <br>
-                                        {{ recipe.date_created }} </p>
+
+                                <p class="recipe-card-text recipe-card-link">Author: {{ recipe.creator }} <br>
+                                    {{ recipe.date_created }} </p>
+                                <a href="{% url 'full_recipe' recipe.slug %}" role="button"
+                                    class="recipe-link btn btn-warning btn-sm">Go to recipe</a>
                                 </a>
                                 <hr>
                                 <p class="recipe-card-text">{{ recipe.about | safe }}</p>
@@ -122,21 +130,19 @@
                     <br>
                 </div>
                 {% if forloop.counter|divisibleby:4 %}
-                <div class="row">
-                    {% endif %}
-                    {% empty %}
-                    <p>You have no recipes saved as draft </p>
-
-
-                    {% endfor %}
-                </div>
-
+            </div>
+            <div class="row">
+                {% endif %}
+                {% empty %}
+                    <p class="empty-text">You have no recipes published </p>
+                {% endfor %}
             </div>
         </div>
     </div>
 </div>
 
 <br>
+
 <div class="container">
     <h2 class="fs-3">Saved Recipes</h2>
 
@@ -164,21 +170,24 @@
                                     <img class="card-img-top" src=" {{ recipe.featured_image.url }}">
                                     {% endif %}
                                 </div>
-                                <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
-                                    <h2 class="card-title">{{ recipe.title }}</h2>
-                                    <p class="recipe-card-text">Category: {{ recipe.category }} <br>
+                                <h2 class="card-title">{{ recipe.title }}</h2>
+                                <p class="recipe-card-text d-none d-lg-block">Category: {{ recipe.category }} <br>
                                         Tags:
                                         {% for tag in recipe.tags.all %}
-                                        <a href="{% url 'recipes_by_tag' tag.slug %}">{{ tag.name }}</a>
-                                        {% endfor %}</p>
-                                </a>
+                                        {{ tag.name }}
+                                        {% endfor %}
+                                </p>
+                                <a href="{% url 'full_recipe' recipe.slug %}" role="button"
+                                    class="recipe-link btn btn-warning btn-sm d-lg-none">Go to recipe</a>
                             </div>
 
                             <!-- BACK OF CARD-->
                             <div class="flip-card-back scroll-text">
-                                <a href="{% url 'full_recipe' recipe.slug %}" class="recipe-link">
-                                    <p class="recipe-card-text recipe-card-link">Author: {{ recipe.creator }} <br>
-                                        {{ recipe.date_created }} </p>
+
+                                <p class="recipe-card-text recipe-card-link">Author: {{ recipe.creator }} <br>
+                                    {{ recipe.date_created }} </p>
+                                <a href="{% url 'full_recipe' recipe.slug %}" role="button"
+                                    class="recipe-link btn btn-warning btn-sm">Go to recipe</a>
                                 </a>
                                 <hr>
                                 <p class="recipe-card-text">{{ recipe.about | safe }}</p>
@@ -188,13 +197,12 @@
                     <br>
                 </div>
                 {% if forloop.counter|divisibleby:4 %}
-                <div class="row">
-                    {% endif %}
-                    {% empty %}
-                    <p>You have no recipes favourited. </p>
-                    {% endfor %}
-                </div>
-
+            </div>
+            <div class="row">
+                {% endif %}
+                {% empty %}
+                    <p class="empty-text">You have no recipes published </p>
+                {% endfor %}
             </div>
         </div>
     </div>
