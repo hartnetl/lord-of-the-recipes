@@ -38,9 +38,9 @@
         <div class="row g-0 text-center">
             <div class="d-none col d-md-block masthead-image">
                 {% if "placeholder" in recipe.featured_image.url %}
-                <img src="https://res.cloudinary.com/hartnetl/image/upload/v1634056214/temp-logo_lkdghp.png">
+                <img alt="Lord of the Recipes logo" src="https://res.cloudinary.com/hartnetl/image/upload/v1634056214/temp-logo_lkdghp.png">
                 {% else %}
-                <img src=" {{ recipe.featured_image.url }}">
+                <img alt="User uploaded image" src=" {{ recipe.featured_image.url }}">
                 {% endif %}
             </div>
         </div>
@@ -59,7 +59,7 @@
                         <li><strong>Preparation Time: </strong>{{ recipe.prep_time | safe }}</li>
                         <li> <strong>Cooking Time: </strong>{{ recipe.cook_time | safe }}</li>
                     </ul>
-                </p>
+                
                 {% if recipe.about %}
                 <p class="card-text ">
                     <strong>About:</strong><br>
