@@ -102,7 +102,7 @@ class RecipeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'recipe_form.html'
-    success_message = "Your recipe has been successfully submitted and is now awaiting by admin"
+    success_message = "Your recipe has been successfully submitted and is now awaiting approval by admin"
 
     def get_success_url(self):
         return reverse('full_recipe', kwargs={'slug': self.object.slug})
@@ -111,7 +111,7 @@ class RecipeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         form.instance.creator = self.request.user
         print(form.cleaned_data)
         return super().form_valid(form)
-
+        
 
 class RecipeUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Recipe

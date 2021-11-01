@@ -8,7 +8,7 @@ class RecipeForm(forms.ModelForm):
 
     class Meta:
         model = Recipe
-        exclude = ('slug', 'date_created', 'approved', 'saved',)
+        exclude = ('slug', 'creator', 'date_created', 'approved', 'saved',)
         widgets = {
             'about': SummernoteWidget(),
             'method': SummernoteWidget(),
@@ -27,6 +27,3 @@ class EmailForm(forms.Form):
     recipient = forms.EmailField()
     message = forms.CharField(widget=forms.Textarea)
 
-
-# class EditForm(forms.Form):
-#     edit = forms.CharField(widget=SummernoteInplaceWidget())
