@@ -97,7 +97,7 @@
     <main class="flex-shrink-0 main-bg">
         <div class="container">
             {% if user.is_authenticated %}
-            <em class="welcome-msg-main">Hello {{ request.user }}</em>
+            <em class="welcome-msg-main d-none d-lg-inline-block">Hello {{ request.user }}</em>
             {% endif %}
 
             <!-- Pop up alert message -->
