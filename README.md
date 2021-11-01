@@ -123,7 +123,7 @@ Logged in users will be able to see edit and delete buttons on this page if view
 <summary>Data models used:</summary>
 
 ![datamodels used](static/readme/models.png)
-
+</details>
 
 ## Technologies Used
 
@@ -197,7 +197,13 @@ Table for user stores - associated features - works as expected
 
 ### Validation
 
-html -
+html: [W3C markup validator](https://validator.w3.org/)   
+Each page url was ran through the validator and any errors or warnings that appeared were corrected, and the url was ran through the validator again.  
+<details>
+<summary>This is the error and warning free validation seen for all pages</summary>
+
+![w3c html validator results for home page](static/readme/html-validated.png)
+</details>
 css - 
 python/django - 
 
