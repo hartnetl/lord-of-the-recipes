@@ -225,8 +225,22 @@ Python: [pep8](http://pep8online.com/)
 <details>
 <summary>Pep8 all clear message</summary>
 
-All python files were vallidated and corrected to have no errors or warnings. 
+Most python files were vallidated and corrected to have no errors or warnings. 
 ![pep8 no warnings or errors visible on most python files](static/readme/pep8.png)
+</details>
+
+<details>
+<summary>Some files had long lines which couldn't be broken</summary>
+
+settings.py and views.py have lines which throw errors if broken using '\'.
+<details>
+<summary>Example line of code</summary>
+</details>
+<details>
+<summary>Error code e501</summary>
+
+![This is the pep8 error](static/readme/pep8-e501.png)
+</details>
 </details>
 
 

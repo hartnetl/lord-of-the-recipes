@@ -46,8 +46,7 @@ class FullRecipe(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Recipe.objects
         recipe = get_object_or_404(queryset, slug=slug)
-        comments = recipe.comments.filter(approved=True).order_by('date_\
-                                                                   posted')
+        comments = recipe.comments.filter(approved=True).order_by('date_posted')
         saves = False
         if recipe.saved.filter(id=self.request.user.id).exists():
             saves = True
@@ -67,8 +66,7 @@ class FullRecipe(View):
     def post(self, request, slug, *args, **kwargs):
         queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
-        comments = recipe.comments.filter(approved=True).order_by('date_\
-                                                                    posted')
+        comments = recipe.comments.filter(approved=True).order_by('date_posted')
         saves = False
         if recipe.saved.filter(id=self.request.user.id).exists():
             saves = True
@@ -85,7 +83,7 @@ class FullRecipe(View):
                              is pending approval by admin.")
         else:
             comment_form = CommentForm()
-
+        
         return render(
             request,
             'view_recipe.html',
@@ -114,7 +112,7 @@ class RecipeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         form.instance.creator = self.request.user
         print(form.cleaned_data)
         return super().form_valid(form)
-
+        
 
 class RecipeUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Recipe
@@ -122,7 +120,7 @@ class RecipeUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     template_name = 'update_recipe_form.html'
     success_message = "Your recipe has been successfully updated and will be \
                         reviewed by admin"
-
+                        
     def get_success_url(self):
         return reverse('full_recipe', kwargs={'slug': self.object.slug})
 
@@ -132,7 +130,7 @@ class RecipeDelete(LoginRequiredMixin, DeleteView):
     template_name = 'recipe_confirm_delete.html'
     success_url = reverse_lazy("recipes")
 
-
+    
 class ContactPage(TemplateView):
     template_name = 'contact.html'
     success_message = "Your message has been sent and someone will get back \
@@ -180,11 +178,11 @@ class ProfileRecipes(View):
         )
 
 
-# Category views
+# Category views 
 
 class BreakfastView(generic.ListView):
     model = Recipe
-    queryset = Recipe.objects.filter(status=1, approved=True,
+    queryset = Recipe.objects.filter(status=1, approved=True, 
                                      category='BFAST').order_by('title')
     template_name = 'breakfast.html'
     paginate_by = 8
