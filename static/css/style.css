@@ -52,8 +52,6 @@ h6 {
 
 .nav-item a:hover,
 .footer-basic ul a:hover {
-  -webkit-transform: scale(1.2);
-  -ms-transform: scale(1.2);
   transform: scale(1.2);
   font-weight: bolder;
 }
@@ -253,7 +251,6 @@ RECIPE LIST PAGE
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden;
   /* Safari */
   backface-visibility: hidden;
 }
@@ -282,7 +279,8 @@ RECIPE LIST PAGE
 }
 
 .scroll-text p {
-  word-break: break-word;
+ /* word-break: keep-all; */
+ overflow-wrap: anywhere;
 }
 
 .card-title {
@@ -385,7 +383,6 @@ RECIPE VIEW PAGE
 #about-recipe li {
   text-decoration: none;
   list-style: none;
-  align-items: space-between;
   margin: 0 auto;
 }
 
@@ -572,3 +569,4 @@ Media Queries
   .flip-card {
     height: 30vh;
   }
+}

@@ -1,18 +1,16 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
-from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.base import TemplateView
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
-from django.core.mail import send_mail, mail_admins
 from django.http import HttpResponseRedirect
-from .models import Recipe, Comment
-from .forms import RecipeForm, CommentForm
 from taggit.models import Tag
+from .models import Recipe
+from .forms import RecipeForm, CommentForm
 
 
 class TagMixin(object):
@@ -20,6 +18,7 @@ class TagMixin(object):
         context = super(TagMixin, self).get_context_data(**kwargs)
         context['tags'] = Tag.objects.all()
         return context
+
 
 class RecipeList(TagMixin, generic.ListView):
     model = Recipe
@@ -47,7 +46,8 @@ class FullRecipe(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Recipe.objects
         recipe = get_object_or_404(queryset, slug=slug)
-        comments = recipe.comments.filter(approved=True).order_by('date_posted')
+        comments = recipe.comments.filter(approved=True).order_by('date_\
+                                                                   posted')
         saves = False
         if recipe.saved.filter(id=self.request.user.id).exists():
             saves = True
@@ -67,7 +67,8 @@ class FullRecipe(View):
     def post(self, request, slug, *args, **kwargs):
         queryset = Recipe.objects.filter(status=1)
         recipe = get_object_or_404(queryset, slug=slug)
-        comments = recipe.comments.filter(approved=True).order_by('date_posted')
+        comments = recipe.comments.filter(approved=True).order_by('date_\
+                                                                    posted')
         saves = False
         if recipe.saved.filter(id=self.request.user.id).exists():
             saves = True
@@ -80,10 +81,11 @@ class FullRecipe(View):
             comment = comment_form.save(commit=False)
             comment.recipe = recipe
             comment.save()
-            messages.success(request, "Your comment was sent successfully and is pending approval by admin.")
+            messages.success(request, "Your comment was sent successfully and \
+                             is pending approval by admin.")
         else:
             comment_form = CommentForm()
-        
+
         return render(
             request,
             'view_recipe.html',
@@ -102,7 +104,8 @@ class RecipeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'recipe_form.html'
-    success_message = "Your recipe has been successfully submitted and is now awaiting approval by admin"
+    success_message = "Your recipe has been successfully submitted and is now \
+                        awaiting approval by admin"
 
     def get_success_url(self):
         return reverse('full_recipe', kwargs={'slug': self.object.slug})
@@ -111,15 +114,15 @@ class RecipeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         form.instance.creator = self.request.user
         print(form.cleaned_data)
         return super().form_valid(form)
-        
+
 
 class RecipeUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Recipe
     form_class = RecipeForm
-    # summernote_fields = ['about', 'method', 'nutrition', 'ingredients', ]
-    # fields = ['title', 'about', 'nutrition', 'servings', 'prep_time', 'cook_time', 'ingredients', 'method', 'tags', 'status', 'featured_image', 'category', ]
     template_name = 'update_recipe_form.html'
-    success_message = "Your recipe has been successfully updated and will be reviewed by admin"
+    success_message = "Your recipe has been successfully updated and will be \
+                        reviewed by admin"
+
     def get_success_url(self):
         return reverse('full_recipe', kwargs={'slug': self.object.slug})
 
@@ -129,10 +132,12 @@ class RecipeDelete(LoginRequiredMixin, DeleteView):
     template_name = 'recipe_confirm_delete.html'
     success_url = reverse_lazy("recipes")
 
-    
+
 class ContactPage(TemplateView):
     template_name = 'contact.html'
-    success_message = "Your message has been sent and someone will get back to you shortly. Please don't leave this page until the form clears."
+    success_message = "Your message has been sent and someone will get back \
+                        to you shortly. Please don't leave this page until \
+                        the form clears."
 
 
 # View to save recipes
@@ -159,11 +164,10 @@ class ProfileRecipes(View):
         draft = Recipe.objects.filter(status=0, creator=request.user)
         # display recipes saved by user credit
         # https://www.py4u.net/discuss/1270319
-        # https://stackoverflow.com/questions/12615154/how-to-get-the-currently-logged-in-users-user-id-in-django
+        # https://stackoverflow.com/questions/12615154/how-to-get-the-currently
+        # -logged-in-users-user-id-in-django
         current_user = request.user
         saved = User.objects.get(pk=current_user.id).saved_recipes.all()
-        print(f"published:{published}, draft:{draft}, current user:{current_user}, saved:{saved}")
-        print(f"{request}")
 
         return render(
             request,
@@ -176,38 +180,43 @@ class ProfileRecipes(View):
         )
 
 
-# Category views 
+# Category views
 
 class BreakfastView(generic.ListView):
     model = Recipe
-    queryset = Recipe.objects.filter(status=1, approved=True, category='BFAST').order_by('title')
+    queryset = Recipe.objects.filter(status=1, approved=True,
+                                     category='BFAST').order_by('title')
     template_name = 'breakfast.html'
     paginate_by = 8
 
 
 class LunchView(generic.ListView):
     model = Recipe
-    queryset = Recipe.objects.filter(status=1, approved=True, category='LUNCH').order_by('title')
+    queryset = Recipe.objects.filter(status=1, approved=True,
+                                     category='LUNCH').order_by('title')
     template_name = 'lunch.html'
     paginate_by = 8
 
 
 class DinnerView(generic.ListView):
     model = Recipe
-    queryset = Recipe.objects.filter(status=1, approved=True, category='DINNER').order_by('title')
+    queryset = Recipe.objects.filter(status=1, approved=True,
+                                     category='DINNER').order_by('title')
     template_name = 'dinner.html'
     paginate_by = 8
 
 
 class DrinksView(generic.ListView):
     model = Recipe
-    queryset = Recipe.objects.filter(status=1, approved=True, category='DRINKS').order_by('title')
+    queryset = Recipe.objects.filter(status=1, approved=True,
+                                     category='DRINKS').order_by('title')
     template_name = 'drinks.html'
     paginate_by = 8
 
 
 class OtherView(generic.ListView):
     model = Recipe
-    queryset = Recipe.objects.filter(status=1, approved=True, category='OTHER').order_by('title')
+    queryset = Recipe.objects.filter(status=1, approved=True,
+                                     category='OTHER').order_by('title')
     template_name = 'other.html'
     paginate_by = 8

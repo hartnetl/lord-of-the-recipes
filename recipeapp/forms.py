@@ -1,7 +1,6 @@
-from .models import Recipe, Comment
 from django import forms
-from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
-from django_summernote.fields import SummernoteTextField
+from django_summernote.widgets import SummernoteWidget
+from .models import Recipe, Comment
 
 
 class RecipeForm(forms.ModelForm):
@@ -26,4 +25,3 @@ class CommentForm(forms.ModelForm):
 class EmailForm(forms.Form):
     recipient = forms.EmailField()
     message = forms.CharField(widget=forms.Textarea)
-

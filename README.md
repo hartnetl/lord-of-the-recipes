@@ -183,7 +183,8 @@ Other tools
 
 ### Future features 
 
-
+* Socials sign in
+* Forgot password functionality
 
 ## Testing 
 
@@ -210,9 +211,23 @@ Each page url was ran through the validator and any errors or warnings that appe
 In some pages such as the profile page, recipe view page and recipe list page an error was showing that there was a closing p tag but no opening tag for it. In my hardcoded html there was no extra closing p tag. I believe this to have come from the use of summernote injecting it's own html. Feedback from previous projects were very specific about not leaving in **any** errors so I made the decision to follow the validator and remove the hardcoded closing p tag. This removes the error upon validation, and none arise for not having a closing tag hard coded.
 
 ![p tag error](static/readme/p-close-error.png)
+</details>  
+<br>
+CSS: 
+CSS was copied into the validator and all errors and warnings were removed.  
+<details>
+<summary>View clear validator</summary>
+
+![css validator with no warnings](static/readme/css-validate.png)
+</details>   
+
+Python: [pep8](http://pep8online.com/)  
+<details>
+<summary>Pep8 all clear message</summary>
+
+All python files were vallidated and corrected to have no errors or warnings. 
+![pep8 no warnings or errors visible on most python files](static/readme/pep8.png)
 </details>
-css - 
-python/django - 
 
 
 ### Automated testing

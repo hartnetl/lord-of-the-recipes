@@ -1,5 +1,4 @@
 from django.db import models
-from django.urls import reverse
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
@@ -21,7 +20,8 @@ class Recipe(models.Model):
 
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name="recipes")
+    creator = models.ForeignKey(User, on_delete=models.CASCADE,
+                                related_name="recipes")
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     about = models.TextField(blank=True)
@@ -36,8 +36,10 @@ class Recipe(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     featured_image = CloudinaryField('image', default='placeholder')
     approved = models.BooleanField(default=False)
-    category = models.CharField(max_length=9, choices=CATEGORY_CHOICE,  default='OTHER')
-    saved = models.ManyToManyField(User, related_name='saved_recipes', blank=True)
+    category = models.CharField(max_length=9, choices=CATEGORY_CHOICE,
+                                default='OTHER')
+    saved = models.ManyToManyField(User, related_name='saved_recipes',
+                                   blank=True)
 
     # Using slugify found here https://kodnito.com/posts/slugify-urls-django/
     def save(self, *args, **kwargs):
@@ -54,7 +56,8 @@ class Recipe(models.Model):
 
 # Comments model
 class Comment(models.Model):
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='comments')
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE,
+                               related_name='comments')
 
     name = models.CharField(max_length=40)
     email = models.EmailField()
@@ -67,4 +70,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment {self.message} by {self.name}"
-
