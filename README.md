@@ -243,7 +243,7 @@ settings.py and views.py have lines which throw errors if broken using '\'.
 </details>
 </details>
 
-JS: [JSHint]()  
+JS: [JSHint](https://jshint.com/)  
 JS script was ran through jshint and returns no errors or warnings
 <details><summary>View jshint result</summary>
 
@@ -251,7 +251,7 @@ JS script was ran through jshint and returns no errors or warnings
 </details>
 
 
-Links: [w3c link validator]()
+Links: [w3c link validator](https://validator.w3.org/checklink)
 On the home page there was a warning for the LinkedIn link. It was tested manually as suggested and it works as expected.
 <details>
 <summary>View report here</summary>
@@ -260,16 +260,25 @@ On the home page there was a warning for the LinkedIn link. It was tested manual
 </details>
 
 
-### Automated testing
-
-unit test
-
-
 ## Bugs
 
 ***
 
 ### Fixed 
+
+* BUG: When registering for a profile, users who enter an email address get a 500 server request.
+    * FIX: Turn off email verification
+* BUG: When users first sign up they get a server 500 error when viewing profile
+    * FIX: Placement of {% empty %} was wrong
+* BUG: Data in edit form shows html code
+    * FIX: Add summernote widget to form fields
+* BUG: Uploaded user photos don't show in full recipe view
+    * FIX: Typo in html code
+* BUG: Slug doesn't auto generate as in the admin panel
+    * FIX: Add slugify to model for front end generation.  
+    https://kodnito.com/posts/slugify-urls-django/
+* BUG: Heroku error h10 
+    * FIX: This appeared numerous times, and was usually a syntax / punctuation error in settings.py
 
 
 ### Remaining
