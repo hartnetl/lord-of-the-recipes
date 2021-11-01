@@ -491,12 +491,14 @@ RECIPE VIEW PAGE
 /* PROFILE PAGE  */
 
 .empty-text  {
-  color: whitesmoke;
+  color: rgba(245, 245, 245, 0.836);
+  font-style: italic;
 }
 
-.empty-text p{
-  color: whitesmoke;
-}
+/* .empty-text p{
+  color: rgba(245, 245, 245, 0.836);
+  font-style: italic;
+} */
 
 /* Media Queries  */
 
