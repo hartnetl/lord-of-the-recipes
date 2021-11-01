@@ -4,7 +4,10 @@
 <html lang="en">
 
 <head>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lord of the Recipes</title>
     <!-- Fonts go here-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,14 +28,9 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- Custom js sheet-->
     <script src="{% static 'js/script.js' %}"></script>
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lord of the Recipes</title>
     <!-- EmailJS *MUST BE AT BOTTOM OF HEAD* -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-    <script type="text/javascript">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script>
         (function () {
             emailjs.init('user_1dqcfIzm6DuOVqpkLPFQu');
         })();
@@ -123,8 +121,10 @@
     <!-- Footer -->
     <div class="footer-basic">
         <footer>
-            <div class="social"><a href="https://github.com/hartnetl"><i class="fab fa-github-square"></i></a><a
-                    href="https://www.linkedin.com/in/laurahartnett94/"><i class="fab fa-linkedin"></i></div>
+            <div class="social">
+                <a href="https://github.com/hartnetl"><i class="fab fa-github-square"></i></a>
+                <a href="https://www.linkedin.com/in/laurahartnett94/"><i class="fab fa-linkedin"></i></a>
+            </div>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="{% url 'home' %}">Home</a></li>
                 <li class="list-inline-item"><a href="{% url 'about' %}">About</a></li>

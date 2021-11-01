@@ -21,7 +21,7 @@
                 you want to experience the delectable dishes served up in Food Wars. Whatever the occassion (or fandom)
                 browse through our recipes and live your best life!
             </p>
-            <button type="button" class="btn box-button"><a href="{% url 'recipes' %}">Explore</a></button>
+            <a href="{% url 'recipes' %}" role="button" class="btn box-button">Explore</a>
         </div>
         <div id="signup" class="col-md-5 box">
             <p>
@@ -29,7 +29,7 @@
                 recipes you'll actually use? <br> Feeling left out of the conversation? <br> Sign up today to leave
                 comments, create recipes and most importantly, save your faves!
             </p>
-            <button type="button" class="btn box-button"><a href="{% url 'account_signup' %}">Sign Up</a></button>
+            <<a href="{% url 'account_signup' %}" reole="button" class="btn box-button">Sign Up</a>
         </div>
     </div>
     {% else%}
@@ -38,7 +38,7 @@
             you want to experience the delectable dishes served up in Food Wars. Whatever the occassion (or fandom)
             browse through our recipes and live your best life!
         </p>
-        <button type="button" class="btn box-button"><a href="{% url 'recipes' %}">Explore</a></button>
+        <a href="{% url 'recipes' %}" role="button" class="btn box-button">Explore</a>
     </div>
     {% endif %}
 </div>

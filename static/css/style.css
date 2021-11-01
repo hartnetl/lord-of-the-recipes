@@ -495,12 +495,12 @@ RECIPE VIEW PAGE
   font-style: italic;
 }
 
-/* .empty-text p{
-  color: rgba(245, 245, 245, 0.836);
-  font-style: italic;
-} */
 
-/* Media Queries  */
+/* 
+#################
+Media Queries 
+#################
+*/
 
 @media screen and (max-width: 1024px) {
   #signup_form {
