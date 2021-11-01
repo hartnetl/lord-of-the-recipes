@@ -200,9 +200,16 @@ Table for user stores - associated features - works as expected
 html: [W3C markup validator](https://validator.w3.org/)   
 Each page url was ran through the validator and any errors or warnings that appeared were corrected, and the url was ran through the validator again.  
 <details>
-<summary>This is the error and warning free validation seen for all pages</summary>
+<summary>This is the error and warning free validation seen for most pages</summary>
 
 ![w3c html validator results for home page](static/readme/html-validated.png)
+</details>
+<details>
+<summary>Extra closing p tag error</summary>
+
+In some pages such as the profile page, recipe view page and recipe list page an error was showing that there was a closing p tag but no opening tag for it. In my hardcoded html there was no extra closing p tag. I believe this to have come from the use of summernote injecting it's own html. Feedback from previous projects were very specific about not leaving in **any** errors so I made the decision to follow the validator and remove the hardcoded closing p tag. This removes the error upon validation, and none arise for not having a closing tag hard coded.
+
+![p tag error](static/readme/p-close-error.png)
 </details>
 css - 
 python/django - 
