@@ -474,6 +474,22 @@ RECIPE VIEW PAGE
   font-style: italic;
 }
 
+/* 404 page */
+
+#lost-img {
+  height: 80vh;
+  width: 50vw;
+  display: block;
+  margin: 0 auto;
+}
+
+#msg-404 {
+  font-size: 4em;
+}
+
+#msg-redirect {
+  font-size: 3em;
+}
 
 /* 
 #################
