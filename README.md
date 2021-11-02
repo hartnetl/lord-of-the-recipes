@@ -359,6 +359,9 @@ On the home page there was a warning for the LinkedIn link. It was tested manual
 
 Code
 
+* custom 404 page
+https://www.youtube.com/watch?v=3SKjPppM_DU
+
 * flip cards  
 https://www.w3schools.com/howto/howto_css_flip_card.asp
 
@@ -369,6 +372,15 @@ https://stackoverflow.com/questions/524992/django-templates-create-a-back-link
 
 * taggit tutorial  
 https://www.youtube.com/watch?v=Y70bvbW8zso
+
+
+MEDIA
+
+    * 404 page map  
+    https://pngtree.com/freepng/treasure-map-treasure-map-clip-art_5903304.html
+
+    * icons are all fontawesome
+
     
 
 ## Deployment

@@ -22,3 +22,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('recipeapp.urls'), name='recipeapp_urls'),
     ]
+
+handler404 = 'recipeapp.views.handle_not_found'

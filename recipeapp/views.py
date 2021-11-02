@@ -13,6 +13,9 @@ from .models import Recipe
 from .forms import RecipeForm, CommentForm
 
 
+def handle_not_found(request, exception):
+    return render(request, 'not-found.html')
+
 class TagMixin(object):
     def get_context_data(self, **kwargs):
         context = super(TagMixin, self).get_context_data(**kwargs)
