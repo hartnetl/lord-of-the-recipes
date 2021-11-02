@@ -66,6 +66,12 @@
                     {{ recipe.about | safe }}
                 </p>
                 {% endif %}
+                {% if recipe.url %}
+                <p class="card-text ">
+                    <strong>Original url:</strong><br>
+                    <a href="{{ recipe.url }}" target="_blank">{{ recipe.url }}</a>
+                </p>
+                {% endif %}
                 {% if recipe.nutrition %}
                 <p class="card-text ">
                     <strong>Nutrition:</strong><br>
