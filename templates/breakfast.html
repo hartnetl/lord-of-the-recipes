@@ -9,6 +9,7 @@
 
 <h1>BREAKFAST</h1>
 
+<!-- Category buttons -->
 <a href="{% url 'recipes' %}" class="btn btn-outline-secondary" role="button" aria-disabled="true">All</a>
 <a href="{% url 'breakfast' %}" class="btn btn-secondary" role="button" aria-disabled="true">Breakfast</a>
 <a href="{% url 'lunch' %}" class="btn btn-outline-success" role="button" aria-disabled="true">Lunch</a>
@@ -21,8 +22,6 @@
 
 <div class="container-fluid">
     <div class="row">
-
-        <!-- flip cards -->
 
         <div class="col-12 mt-3 left">
             <div class="row">
@@ -80,8 +79,6 @@
         </div>
     </div>
 
-
-
     <!-- PAGINATION -->
 
     {% if is_paginated %}
@@ -104,10 +101,6 @@
     </div>
     {% endif %}
 
-
-
-
 </div>
-
 
 {% endblock %}
