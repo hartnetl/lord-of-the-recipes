@@ -4,10 +4,10 @@
 #################
  */
 
- * {
+* {
   font-family: 'Noto Sans', sans-serif;
- }
- 
+}
+
 /* main colours */
 
 a {
@@ -59,7 +59,6 @@ h6 {
   transform: scale(1.2);
   font-weight: bolder;
 }
-
 
 /* general styling for all pages */
 
@@ -189,22 +188,6 @@ h1 {
 
 /*
 #################
-      HOME 
-#################
- */
-
-/* #welcome {
-  height: 20vh;
-} */
-
-/* #explore, #signup {
-  height: 30vh;
-} */
-
-
-
-/*
-#################
 RECIPE LIST PAGE 
 #################
  */
@@ -255,7 +238,6 @@ RECIPE LIST PAGE
   position: absolute;
   width: 100%;
   height: 100%;
-  /* Safari */
   backface-visibility: hidden;
 }
 
@@ -283,8 +265,8 @@ RECIPE LIST PAGE
 }
 
 .scroll-text p {
- /* word-break: keep-all; */
- overflow-wrap: anywhere;
+  /* word-break: keep-all; */
+  overflow-wrap: anywhere;
 }
 
 .card-title {
@@ -318,10 +300,6 @@ RECIPE LIST PAGE
   /* color: rgba(14, 9, 36, .6); */
   color: rgba(249, 248, 252);
 }
-
-/* .recipe-card-text a btn {
-  color: white;
-} */
 
 .step-links {
   width: 20vw;
@@ -491,7 +469,7 @@ RECIPE VIEW PAGE
 
 /* PROFILE PAGE  */
 
-.empty-text  {
+.empty-text {
   color: rgba(245, 245, 245, 0.836);
   font-style: italic;
 }
@@ -565,7 +543,7 @@ Media Queries
   .bottom-margin {
     margin-bottom: 5%;
   }
-  
+
 }
 
 @media screen and (min-height: 1000px) {
