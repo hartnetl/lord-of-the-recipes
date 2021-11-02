@@ -137,8 +137,6 @@ Logged in users will be able to see edit and delete buttons on this page if view
 * The main heading font is [Architects Daughter](https://fonts.google.com/specimen/Architects+Daughter). Is is a relaxed, easy to read font which adds a bit of playfulness to the headings.
 * The recipe create form has summernote fields which gives users the ability to quickly input their own fonts, styles etc. As this site aims to deliver a community feel, I felt it best to enable users to be able to express some personality and creativity.
 
-**Colour Scheme**
-
 ## Data Structure
 
 The database used locally and by heroku is postgres.  
