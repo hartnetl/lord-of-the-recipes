@@ -295,6 +295,9 @@ On the home page there was a warning for the LinkedIn link. It was tested manual
     
 
 - Code
+
+* Cancel function to load previous page  
+https://stackoverflow.com/questions/524992/django-templates-create-a-back-link
     
 
 ## Deployment
