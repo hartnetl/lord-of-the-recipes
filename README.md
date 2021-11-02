@@ -30,6 +30,27 @@ Agile development helps to create an organised and efficient development plan to
 This system requires a thorough project planning phase - deciding what the app is, and what the main goals of the project are. These are then developed into user stories, and features are built to address these user stories. To keep track of my development I created a user stories kanban board in github projects ([here](https://github.com/hartnetl/lord-of-the-recipes/projects/1)). I created an issue for each user story which was set to automatically display in my user story project. As I tackled each user story, it was moved to the in progress column. When I felt it had been completed it was moved to complete. Agile development also allows for the project to change. If the requirements have been met it is possible to revisit an issue to make changes or improvements to deliver the project in the best form possible.  
 A second kanban board was created on github projects - a [todo list](https://github.com/hartnetl/lord-of-the-recipes/projects/2). This list contained small detail or general things that were needed but weren't attributable to a user story.
 
+
+#### User Goals
+
+As a user I want to be able to   
+
+* Browse recipes
+* Add my own recipes
+* Save recipes for quick access
+* Easily find required information through intuitive layout and filter options
+* Explore a well laid out, easy to use site on any device 
+
+As a site owner I want to be able to  
+
+* Add recipes
+* Moderate the content being uploaded by users to create a safe and welcoming space
+* Create a website that can be easily used by all to increase number of users
+* Create a community of like minded people
+* Encourage users to register on the site as that makes them more likely to reuse the site
+* Offer a usable, convenient website which people actually wish to use day after day
+
+
 #### User stories 
 
 | As a:       | I can:         | So that:  |
@@ -114,9 +135,9 @@ Logged in users will be able to see edit and delete buttons on this page if view
 
 **Fonts**
 * The logo font used is [bubblegum sans](https://fonts.google.com/specimen/Bubblegum+Sans). It's a very fun and quirky font suited to the vibe of the page.
-* The main font used is x because x
+* The main text font used is [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans?category=Sans+Serif). It is a sans-serif font which is more a more accessible font type, and I think it compliments my header font nicely.
 * The main heading font is [Architects Daughter](https://fonts.google.com/specimen/Architects+Daughter). Is is a relaxed, easy to read font which adds a bit of playfulness to the headings.
-* The recipe create form has summernote fields which gives users the ability to quickly input their own fonts, styles etc. As this site aims to deliver a community feel I felt it best to enable users to be able to express some personality.
+* The recipe create form has summernote fields which gives users the ability to quickly input their own fonts, styles etc. As this site aims to deliver a community feel, I felt it best to enable users to be able to express some personality and creativity.
 
 **Colour Scheme**
 
@@ -134,16 +155,43 @@ Each registered user is assigned a user id. They can create recipes which will b
 ![datamodels used](static/readme/models.png)
 </details>
 
+<br>
+
 ## Technologies Used
 
 ***
 
-Languages
-    - Python, javascript, html, css
-Libraries etc
-    - django, bootstrap, taggit, summernote, googlefonts, fontawesome, postgresql, cloudinary
+Languages  
+* [Python3](https://www.python.org/about/) 
+* [Javascript](https://www.tutorialspoint.com/javascript/javascript_overview.htm#:~:text=JavaScript%20is%20a%20dynamic%20computer,language%20with%20object%2Doriented%20capabilities.) 
+* [html5](https://developer.mozilla.org/en-US/docs/Web/HTML) 
+* [css](https://developer.mozilla.org/en-US/docs/Web/CSS)
+
+<br>
+
+Libraries and other technologies used
+* [Django 3](https://www.djangoproject.com/start/overview/)
+* [Bootstrap 5](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
+* [Taggit](https://github.com/jazzband/django-taggit)
+* [Summernote](https://summernote.org/)
+* [Google fonts](https://fonts.google.com/)
+* [Fontawesome](https://fontawesome.com/)
+* [Postgresql](https://www.postgresql.org/)
+* [cloudinary](https://cloudinary.com/about)
+
 Other tools
-    - gitpod, git, github, heroku, w3c markup for html and css, jshint validator, linkchecker, lighthouse, pep8, grammerly, githubprojects, balsamiq,
+* [Gitpod](https://www.gitpod.io/docs/) as the IDE for development 
+* [Git](https://git-scm.com/about) for version control 
+* [Github](https://github.com/about) to host the project code 
+* [Heroku](https://www.heroku.com/about) to deploy the project
+* W3C for validating [html](https://validator.w3.org/), [css](https://jigsaw.w3.org/css-validator/) and [links](https://validator.w3.org/checklink) 
+* [jshint](https://jshint.com/about/) to validate javascript
+* [pep8 online](http://pep8online.com/about) to validate python code
+* [lighthouse](https://developers.google.com/web/tools/lighthouse) to test accessibilility and performance 
+* [github projects](https://docs.github.com/en/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards) to create kanban boards 
+* [balsamiq](https://balsamiq.com/) for wireframes
+* [tinypng](https://tinypng.com/) to compress image file sizes
+* [logomaker](https://www.logomaker.com/ ) to create the logo
     
 
 ## Features
@@ -194,6 +242,9 @@ Other tools
 
 * Socials sign in
 * Forgot password functionality
+* System to allow users to rate recipes and the average is displayed
+* Alter ingredients field to input one by one instead of large text field
+* Light mode / Dark mode
 
 ## Testing 
 
@@ -302,20 +353,22 @@ On the home page there was a warning for the LinkedIn link. It was tested manual
 ### Remaining
 
 
-### Terminal problems
-
-
 ## Credits
 
 ***
 
-- Media
-    
+Code
 
-- Code
+* flip cards  
+https://www.w3schools.com/howto/howto_css_flip_card.asp
+
+* Many tutorials were followed using [geeksforgeeks](https://www.geeksforgeeks.org/), django documentation and youtube for learning about building the django app (views - urls - template). Especially the generic views (CreateView, DeleteView, UpdateView)
 
 * Cancel function to load previous page  
 https://stackoverflow.com/questions/524992/django-templates-create-a-back-link
+
+* taggit tutorial  
+https://www.youtube.com/watch?v=Y70bvbW8zso
     
 
 ## Deployment
@@ -332,28 +385,140 @@ Ensure debug is set to false
 
 ### Deployment
 
+Note: These steps will walk through some of the steps to set up the environment settings just to ensure they are the same
 
+This project was originally deployed following this Code Institute [cheat sheet](https://codeinstitute.s3.amazonaws.com/fst/Django%20Blog%20Cheat%20Sheet%20v1.pdf)
 ## Getting a copy of this project
+
 
 ### Forking Repository
 
-To get a copy of this code you can manipulate without affecting the main code, it can be forked.
+To get a copy of this code it can be forked to your own repository.
 
-- Go to the repository page on GitHub. This project is 
-- Find 'fork' along the top of the page
-- A copy of this code will be sent to your own repository, where you can use that pretty green button to open it in GitPod
+- Go to the repository page on GitHub. This project's repo can be found [here](https://github.com/hartnetl/lord-of-the-recipes) 
+- Find 'fork' along the top of the page on the right hand side
+- A copy of this code will be sent to your own repository, where you can use that pretty green 'Gitpod' button to open it in GitPod
+- You will need to set up your environment as described below for it to work
 
 ### Cloning Repository
 
 If you need a local copy of the code to play with, cloning the code is a better option.
 
-- Go to the repository page on GitHub. This project is 
-- Find the button that says 'Code' beside the green Gitpod button. 
+- Go to the repository page on GitHub. This project is [here](https://github.com/hartnetl/lord-of-the-recipes) 
+- Find the button that says 'Code' to the left of the green Gitpod button. 
 - Choose the cloning method you require (HTTPS/ SSH or CLI)
 - Open Git Bash
 - Enter the working directory as your desired location for the cloned directory
 - Type "git clone" and paste the URL you copied from github
 - Hit enter and the code should be cloned for local use
 
+### Set up your local environment
+
+Install requirements
+
+* In your editor's terminal enter the following command:  
+
+        pip3 install -r requirements.txt
+
+    This will install all the dependancies needed to run the project
+
+
+### Connect to heroku
+
+Set up app on heroku 
+
+* Go to Heroku, and register/login
+* Click 'create new app'
+* Setup your app name and region
+* Navigate to the Resources tab. Set your database to Postgres with the hobby dev option.
+* Go to the Deploy tab and connect your Github repository by searching for it (this one is lord-of-the-recipes)
+
+Connect postgres database to local environment
+
+* Go to or create env.py and import os
+* set up your database and secret key
+
+        os.environ["DATABASE_URL"] = "Paste in Heroku DATABASE_URL Link"  
+        os.environ["SECRET_KEY"] = "Make up a randomSecretKey"
+
+* Make sure env.py is in your gitignore file
+* Go to heroku and add your secret key value to the config vars under SECRET_KEY
+
+Set up environment 
+    
+* In settings.py add:
+    
+        from pathlib import Path
+        import os
+        import dj_database_ur
+
+        if os.path.exists("env.py"):
+            import env
+
+* Set your secret key to
+
+        SECRET_KEY = os.environ.get('SECRET_KEY')
+
+* Set database to postgres
+
+        DATABASES = {
+        'default':
+        dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+
+Run migrations using
+
+    python3 manage.py makemigrations
+    python3 manage.py migrate
+
+Connect static files with cloudinary (this may be substituted for another platform such as aws)
+
+* Create/login to cloudinary account and create project for this app
+* Copy the cloudinary_url from the dashboard
+* Set this in your env.py file
+
+        os.environ["CLOUDINARY_URL"] ="cloudinary://1234:SHDUtZi@dbhyi45mc"
+
+
+* Add this link to the heroku config vars
+* Create DISABLE_COLLECTSTATIC config var and set to 1
+
+
+* In settings.py add cloudinary to installed apps under staticfiles
+* Set cloudinary as the location for static files
+
+    STATIC_URL = '/static/'
+    STATICFILES_STORAGE ='cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    MEDIA_URL = '/media/'
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage
+
+* Link templates directory in heroku to app (still in settings.py)
+
+    Place under the BASE_DIR line  
+
+        TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')  
+
+    Place in templates array  
+
+        'DIRS': [TEMPLATES_DIR]  
+
+* Add heroku and local environment as allowed hosts
+
+    ALLOWED_HOSTS =["PROJECT_NAME.herokuapp.com", "localhost"]
+
+Create Procfile in root directory **Note the capital P** 
+
+    web: gunicorn PROJECT_NAME.wsgi
+
+Commit and push your changes and your app should run in heroku  
+To return to local development just switch debug to true and collectstatic (in heroku config vars) to 0  
+Remember to swap the settings back before pushing and returning to deployed version  
+
+
 ## Acknowledgements
 
+I would like to send an amazing thank you to my entire cohort, without your advice and support I wouldn't have made it through this project.  
+To Kasia, my cohort tutor, words can't express how much your help, guidance and encouragement has motivated me day after day to keep going through this project and the course in general. Thank you for all that you do for us.  
+To my mentor Maria, thank you for being so supportive and encouraging throughout this project, even though you have less availability. It is hugely appreciated.  
+Finally to my friends and family subjected to my complaints, raves about mini problems solved, and then forced to test my site at every stage along the way, thank you. For everything. And I'm sorry for boring you with incessant coding rants and raves... At least that's another project out of the way so you get a break for a little while!  
