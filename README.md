@@ -6,7 +6,7 @@
 
 
 1. [Introduction](#introduction)
-2. [Data Model](#data-model)
+2. [Data Structure](#data-structure)
 3. [Technologies used](#technologies-used)
 4. [Features](#features)
 5. [Testing](#testing)
@@ -23,6 +23,12 @@ Welcome to **Lord of the Recipes**. This website has been built for my fourth po
 Unfortunately the internet can be a dangerous place these days, so to protect users from trolls and other creatures which lurk in the dark recesses of the web any content uploaded will be submitted to admin for approval before being published. 
 
 ### Project Planning
+
+#### Agile Development
+
+Agile development helps to create an organised and efficient development plan to create a project which fulfills it's purpose. I have attempted to use this approach to build this project.  
+This system requires a thorough project planning phase - deciding what the app is, and what the main goals of the project are. These are then developed into user stories, and features are built to address these user stories. To keep track of my development I created a user stories kanban board in github projects ([here](https://github.com/hartnetl/lord-of-the-recipes/projects/1)). I created an issue for each user story which was set to automatically display in my user story project. As I tackled each user story, it was moved to the in progress column. When I felt it had been completed it was moved to complete. Agile development also allows for the project to change. If the requirements have been met it is possible to revisit an issue to make changes or improvements to deliver the project in the best form possible.  
+A second kanban board was created on github projects - a [todo list](https://github.com/hartnetl/lord-of-the-recipes/projects/2). This list contained small detail or general things that were needed but weren't attributable to a user story.
 
 #### User stories 
 
@@ -115,12 +121,14 @@ Logged in users will be able to see edit and delete buttons on this page if view
 
 ## Data Structure
 
-    How the site operates and works
-    Database used (postgres) and image source (cloudinary)
+The database used locally and by heroku is postgres.  
+Cloudinary is used to house user images uploaded to the website.  
 
+The database contains two custom models - recipes and comments. Both link to the user model which is built into django.
+Each registered user is assigned a user id. They can create recipes which will be linked to their id, and each recipe has an auto generated slug field (this is derived from the recipe's title). The recipe can be edited and deleted by the person who created it only (or admin, if guidelines are breached). Registered users can leave comments on any recipe and the comment will display their username. A registered user can choose to publish recipes so they are displayed on the public recipe page, or leave them as drafts so they will only be visible on their own profile page. 
 
 <details>
-<summary>Data models used:</summary>
+<summary>Custom data models used:</summary>
 
 ![datamodels used](static/readme/models.png)
 </details>
@@ -192,8 +200,7 @@ Other tools
 
 ### Manual Testing
 
-Dev tools devices, users
-Table for user stores - associated features - works as expected
+The manual testing file is [here](TESTING.md)
 
 
 ### Validation
@@ -213,15 +220,19 @@ In some pages such as the profile page, recipe view page and recipe list page an
 ![p tag error](static/readme/p-close-error.png)
 </details>  
 <br>
-CSS: 
-CSS was copied into the validator and all errors and warnings were removed.  
+
+CSS: [W3C validator](https://jigsaw.w3.org/css-validator/)  
+CSS file was copied into the validator and all errors and warnings returned were addressed.  
 <details>
 <summary>View clear validator</summary>
 
 ![css validator with no warnings](static/readme/css-validate.png)
 </details>   
 
+<br>
+
 Python: [pep8](http://pep8online.com/)  
+Code was copied directly into the validator.
 <details>
 <summary>Pep8 all clear message</summary>
 
@@ -232,7 +243,13 @@ Most python files were vallidated and corrected to have no errors or warnings.
 <details>
 <summary>Some files had long lines which couldn't be broken</summary>
 
-settings.py and views.py have lines which throw errors if broken using '\'.
+settings.py and views.py have lines which throw errors if broken using ' \ '.  
+Instead #noqa was used to allow the validator to pass that line length error.  
+While the limit should be kept below 79 characters, it is permissable to go up to 99 [[link](https://www.python.org/dev/peps/pep-0008/#:~:text=Some%20teams%20strongly%20prefer%20a%20longer%20line%20length.%20For%20code%20maintained%20exclusively%20or%20primarily%20by%20a%20team%20that%20can%20reach%20agreement%20on%20this%20issue%2C%20it%20is%20okay%20to%20increase%20the%20line%20length%20limit%20up%20to%2099%20characters%2C%20provided%20that%20comments%20and%20docstrings%20are%20still%20wrapped%20at%2072%20characters.)]
+![e501 error - line too long](static/readme/pep8-e501.png)
+
+Code over 79 characters
+![example of code not to be broken](static/readme/longline.png)
 <details>
 <summary>Example line of code</summary>
 </details>
