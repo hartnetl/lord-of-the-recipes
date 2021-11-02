@@ -2,11 +2,9 @@
 
 {% block content %}
 
-<h1>HOME</h1>
-
-<div id="welcome" class="box">
+<div id="welcome" class="box fs-4 lh-lg">
     <p>
-        Welcome to <strong>Lord of the Recipes</strong>! <br> This is a community driven site which aims to deliver
+        <strong class="fs-1">Welcome to <span class="text-warning">Lord of the Recipes</span>!</strong> <br> This is a community driven site which aims to deliver
         delicious, pop culture themed meals right to your fingertips! Can't find what you're looking for? Then sign up
         today and add your own recipes. Your fandom will thank you!
     </p>
@@ -15,7 +13,7 @@
 <div class=container>
     {% if not user.is_authenticated %}
     <div class="row justify-content-between">
-        <div id="explore" class="col-md-5 box">
+        <div id="explore" class="col-md-5 box fs-4 lh-lg">
             <p>
                 Need help planning your next Harry Potter themed party? Fancy yourself living it up like a hobbit? Maybe
                 you want to experience the delectable dishes served up in Food Wars. Whatever the occassion (or fandom)
@@ -23,7 +21,7 @@
             </p>
             <a href="{% url 'recipes' %}" role="button" class="btn box-button">Explore</a>
         </div>
-        <div id="signup" class="col-md-5 box">
+        <div id="signup" class="col-md-5 box fs-4 lh-lg">
             <p>
                 Can't find your fandom? <br> Tired of scrolling through your badly organised bookmarks to find the
                 recipes you'll actually use? <br> Feeling left out of the conversation? <br> Sign up today to leave
@@ -33,7 +31,7 @@
         </div>
     </div>
     {% else%}
-    <div id="explore" class="col box">
+    <div id="explore" class="col box fs-4 lh-lg">
         <p>Need help planning your next Harry Potter themed party? Fancy yourself living it up like a hobbit? Maybe
             you want to experience the delectable dishes served up in Food Wars. Whatever the occassion (or fandom)
             browse through our recipes and live your best life!

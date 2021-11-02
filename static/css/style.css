@@ -75,7 +75,7 @@ main {
   border-radius: 15px;
   padding: 3%;
   text-align: center;
-  box-shadow: 10px 10px 5px grey;
+  box-shadow: 10px 10px 5px rgb(38, 26, 61);
   height: fit-content;
 }
 
@@ -84,6 +84,7 @@ main {
   box-shadow: 5px 5px 7px rgb(18, 99, 79);
   border-radius: 5px;
   display: flex;
+  justify-content: center;
   margin: 0 auto;
 }
 
@@ -466,6 +467,12 @@ RECIPE VIEW PAGE
 .smaller-text {
   font-size: .8rem;
 }
+
+.summernote-div{
+  width: 70vw;
+  overflow-x: auto;
+}
+
 
 /* PROFILE PAGE  */
 
