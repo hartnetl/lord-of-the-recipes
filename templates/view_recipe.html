@@ -59,13 +59,10 @@
                         <li><strong>Preparation Time: </strong>{{ recipe.prep_time | safe }}</li>
                         <li> <strong>Cooking Time: </strong>{{ recipe.cook_time | safe }}</li>
                     </ul>
-                
-                {% if recipe.about %}
                 <p class="card-text ">
                     <strong>About:</strong><br>
                     {{ recipe.about | safe }}
                 </p>
-                {% endif %}
                 {% if recipe.url %}
                 <p class="card-text ">
                     <strong>Original url:</strong><br>

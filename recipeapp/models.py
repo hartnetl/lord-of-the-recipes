@@ -24,7 +24,7 @@ class Recipe(models.Model):
                                 related_name="recipes")
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    about = models.TextField(blank=True)
+    about = models.TextField()
     url = models.URLField(blank=True, max_length=200)
     nutrition = models.TextField(blank=True)
     servings = models.PositiveIntegerField()
