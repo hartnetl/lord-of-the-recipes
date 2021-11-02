@@ -2,8 +2,6 @@
 
 [Live Site]( https://lord-of-the-recipes.herokuapp.com/)
 
-![Am I responsive screenshot]( )
-
 
 1. [Introduction](#introduction)
 2. [Data Structure](#data-structure)
@@ -237,6 +235,54 @@ Other tools
     - Registered users have a profile which displayed the recipes they have created as drafts and published.
     - Also shows a list of recipes they have favourited
 
+#### SCREENSHOTS
+
+<details>
+<summary>home page logged out </summary>
+
+![home page logged out](static/readme/screenshots/home-out.png)
+</details>
+<details>
+<summary>home page logged in  </summary>
+
+![home page logged in](static/readme/screenshots/homepage-in.png)
+</details>
+<details>
+<summary>navbar logged in  </summary>
+
+![navbar logged in](static/readme/screenshots/navbar-in.png)  
+</details>
+<details>
+<summary>profile page   </summary>
+
+![profile page](static/readme/screenshots/profile.png) 
+</details>
+<details>
+<summary>footer </summary>
+ 
+![footer](static/readme/screenshots/footer.png) 
+
+</details>
+<details>
+<summary>contact page   </summary>
+
+![contact page](static/readme/screenshots/contact.png) 
+
+</details>
+<details>
+<summary>recipe view logged in    </summary>
+
+![recipe view logged in ](static/readme/screenshots/recipe-in.png) 
+
+</details>
+<details>
+
+<summary>signout  </summary>
+
+![sign out page](static/readme/screenshots/sign-out.png)  
+
+</details>
+
 
 ### Future features 
 
@@ -351,6 +397,11 @@ On the home page there was a warning for the LinkedIn link. It was tested manual
 
 
 ### Remaining
+
+* BUG: Server 500 error when approving comments/recipes in admin panel. Can be approved within recipe in panel.
+    * No fix found as this is a recent bug - will be addressed in future
+* BUG: Contact form and admin notifications potentially not working
+    * At  10am or so on the morning of submission outlook suspended the email account using emailjs for suspicious looking activity. I'm hoping a few security measures can be fixed to get them working again - the code was working before this block and hopefully will again after.
 
 
 ## Credits
