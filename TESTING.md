@@ -134,3 +134,7 @@ Superusers have access to the django admin panel. Users who register through sit
 ## User feedback
 
 Overall the user feedback was quite positive. The site is easy to read and very intuitive. The forms are straight forward and easy to complete for registration, login and recipes. A few css issues were reported (hello message overlapping buttons, poor text overflow) and these were corrected. Users reported all links, navigation and functions work.
+
+## Manual form testing
+
+* Creating a recipe. All fields display as expected. 

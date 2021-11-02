@@ -80,6 +80,16 @@
                     <strong>Method:</strong><br>
                     {{ recipe.method | safe }}
                 </p>
+                <p class="card-text ">
+                    <strong>Tags:</strong>
+                    {% for tag in recipe.tags.all %}
+                        {{ tag.name }} , 
+                    {% endfor %}
+                </p>
+                <p class="card-text ">
+                    <strong>Category:</strong>
+                    {{ recipe.get_category_display | safe }}
+                </p>
                 <div class="row">
                     <div class="col-1">
                         {% with comments.count as total_comments %}

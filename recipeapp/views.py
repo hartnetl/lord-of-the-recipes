@@ -96,6 +96,8 @@ class FullRecipe(View):
             },
         )
 
+ 
+
 
 # CRUD FOR RECIPES (R is the full recipe view above)
 class RecipeCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):

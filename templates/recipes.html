@@ -56,12 +56,6 @@
                                     {% endif %}
                                 </div>
                                 <h2 class="card-title">{{ recipe.title }}</h2>
-                                <p class="recipe-card-text d-none d-lg-block">Category: {{ recipe.category }} <br>
-                                    Tags:
-                                    {% for tag in recipe.tags.all %}
-                                    {{ tag.name }}
-                                    {% endfor %}
-                                </p>
                                 <a href="{% url 'full_recipe' recipe.slug %}" role="button"
                                     class="recipe-link btn btn-warning btn-sm d-lg-none">Go to recipe</a>
                             </div>
@@ -74,7 +68,15 @@
                                 <a href="{% url 'full_recipe' recipe.slug %}" role="button"
                                     class="recipe-link btn btn-warning btn-sm">Go to recipe</a>
                                 <hr>
-                                <p class="recipe-card-text">{{ recipe.about | safe }}
+                                <p class="recipe-card-text">{{ recipe.about | safe }} </p>
+                                <p class="recipe-card-text d-none d-lg-block">
+                                    Category:
+                                    {{  recipe.get_category_display }} <br>
+                                    Tags:
+                                    {% for tag in recipe.tags.all %}
+                                        {{ tag.name }}
+                                    {% endfor %}
+                                </p>
                             </div>
                         </div>
                     </div>
